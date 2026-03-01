@@ -1,0 +1,77 @@
+{% extends 'base.html' %}
+{% load static %}
+    
+{% block extra_css %}
+<style>
+{% if nino_nombre %}
+.nino-badge {
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    z-index: 9998;
+    background: linear-gradient(135deg, #48c6ef 0%, #6f86d6 100%);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+{% endif %}
+</style>
+{% endblock %}  
+
+ {% block content %}
+<link rel="stylesheet" href="{% static 'css_jocs/memory.css' %}">
+
+{% if nino_nombre %}
+<div class="nino-badge">
+    <span style="font-size: 1.2em;">👶</span>
+    <span>{{ nino_nombre }}</span>
+</div>
+{% endif %}
+<button class="karaoke-back-btn" onclick="window.history.back()" title="Volver" style="position:absolute;top:18px;left:18px;z-index:20;">
+    &#8592;
+</button>
+<section class="memory-section">
+
+    <h1>🎮 Memory de la Esperanza</h1>
+
+    <div class="stats">
+        ⏱️ Tiempo: <span id="timer">0</span>s
+        &nbsp;&nbsp;
+        ⭐ Puntos: <span id="score">0</span>
+    </div>
+
+    <div class="game-board" id="gameBoard"></div>
+
+    <div class="message" id="message">
+        ✨ ¡Has encendido todas las luces de la esperanza!
+    </div>
+
+    <button class="btn" id="restartBtn">🔄 Jugar de nuevo</button>
+    <button class="btn" onclick="window.history.back()" title="Volver">↩️ Volver</button>
+</section>
+
+
+
+<!-- Música fondo -->
+<audio id="bgMusic" loop>
+    <source src="c01.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Sonido acierto -->
+<audio id="matchSound">
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_4b63a7c6c8.mp3?filename=correct-2-46134.mp3" type="audio/mpeg">
+</audio>
+
+<script src="{% static 'js_jocs/memory.js' %}"></script>
+    {% include 'partials/quick-menu.html' %}
+
+{% endblock %}
+
+{% block extra_js %}
+
+{% endblock %}

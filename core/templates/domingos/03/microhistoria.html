@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<style>
+  {
+    % if nino_nombre %
+  }
+
+  .nino-badge {
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    z-index: 9998;
+    background: linear-gradient(135deg, #48c6ef 0%, #6f86d6 100%);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+    {
+    % endif %
+  }
+
+  .btn-volver-micro {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 30px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+
+  .btn-volver-micro:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+  }
+</style>
+
+
+
+
+
+
+
+´{% block content %}
+<link rel="stylesheet" href="{% static 'styles.css' %}">
+
+{% if nino_nombre %}
+<div onclick="window.location.href='{% url 'select-nino' %}?next={{ request.path }}'"
+  style="position: fixed; top: 70px; right: 20px; z-index: 9998; background: linear-gradient(135deg, #48c6ef 0%, #6f86d6 100%); color: white; padding: 10px 20px; border-radius: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); font-weight: bold; display: flex; align-items: center; gap: 8px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;"
+  onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 6px 16px rgba(0,0,0,0.4)';"
+  onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.3)';">
+  <span style="font-size: 1.2em;">👶</span>
+  <span>{{ nino_nombre }}</span>
+  <span
+    style="margin-left: 8px; background: rgba(255,255,255,0.3); padding: 4px 12px; border-radius: 12px; font-size: 0.9em; display: flex; align-items: center; gap: 4px;">
+    ⭐ {{ puntos_totales }}
+  </span>
+</div>
+
+
+<div id="main">
+  {% include 'partials/breadcrumb.html' with breadcrumb_title=breadcrumb_title breadcrumb_items=breadcrumb_items %}
+</div>
+{% endif %}
+
+<div class="microhistoria-container">
+  <div class="microhistoria-title">MICROHISTORIA</div>
+  <h2>“La vela rosa" </h2>
+  <div class="microhistoria-text">
+
+
+
+    Cuando Sofía vio que esa semana la vela era de color rosa, preguntó:<br><br>
+
+    —¿Se han equivocado?<br><br>
+
+    Su abuelo sonrió.<br>
+    —No. Hoy es el domingo de la alegría.<br><br>
+
+    Sofía miró alrededor. No había regalos, ni fiesta, ni música especial. Todo parecía igual que otros días.<br><br>
+
+    —¿Y dónde está la alegría? —insistió.<br><br>
+
+    El abuelo encendió la vela. La pequeña llama iluminó la mesa.<br><br>
+
+    —La alegría no siempre hace ruido —dijo—. A veces es saber que algo bueno está muy cerca.<br><br>
+
+    Esa tarde, Sofía ayudó a su hermano pequeño a recoger los juguetes. Después abrazó a su madre sin que nadie se lo <br>
+    pidiera. No sabía por qué, pero sentía el corazón ligero.<br><br>
+
+    Antes de dormir miró la vela otra vez y comprendió:<br><br>
+
+    La alegría no era esperar regalos.<br>
+    Era saber que Jesús estaba por llegar…<br>
+    y que ella podía empezar a celebrarlo queriendo más.<br><br>
+  </div>
+  <div class="microhistoria-final">✨ La verdadera alegría comienza cuando el corazón descubre que el amor ya está llegando. 🌸</div>
+  <button class="audio-btn" onclick="document.getElementById('audio').play()">🔊 Escuchar narración</button>
+  <!-- Botón para volver -->
+  <a style="text-decoration: none;" class="audio-btn" href="{% url 'domingo2' %}" class="btn-volver-micro">← volver</a>
+  <audio id="audio" src="{% static '/musica/03/DOM03_MH01.mp3' %}"></audio>
+  <img style="margin-top: 1em;" src="{% static 'images/domingos/03/DOM03_MHi01.png' %}" alt="">
+
+
+</div>
+{% include 'partials/quick-menu.html' %}
+
+{% endblock %}

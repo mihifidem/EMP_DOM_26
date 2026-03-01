@@ -1,0 +1,23 @@
+{% load static %}
+    
+
+
+<link rel="stylesheet" href="{% static 'css/menu.css' %}">
+<nav class="bottom-menu">
+    <a href="{% url 'domingo1' %}" title="Ritual"><span>🕯️</span><span class="label">Empezar</span></a>
+    <a href="{% url 'domingo1-game' %}" title="Juego"><span>🎲</span><span class="label">Juego</span></a>
+    <a href="{% url 'domingo1-karaoke' %}" title="Karaoke"><span>🎵</span><span class="label">Karaoke</span></a>
+    <a href="{% url 'domingo1-microhistoria' %}" title="Microhistoria"><span>📖</span><span class="label">Microhistoria</span></a>
+    
+    <!-- Botón colapsable centrado y menú de opciones -->
+    <button id="menu-toggle" class="menu-button" aria-label="Abrir menú">
+      <span id="menu-icon">+</span>
+    </button>
+    <div class="menu-options" id="menu-options">
+      <button class="option">Ir a Inicio</button>
+      <button class="option">Ver Reto</button>
+      <button class="option">Ritual Familiar</button>
+    </div>
+</nav>
+
+<script src="{% static 'js/main2.js' %}"></script>

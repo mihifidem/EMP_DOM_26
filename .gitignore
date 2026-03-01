@@ -1,0 +1,72 @@
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# =========================
+# Entornos virtuales
+# =========================
+env/
+venv/
+ENV/
+.venv/
+env.bak/
+venv.bak/
+
+# =========================
+# Django
+# =========================
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+
+# Archivos estáticos recopilados
+staticfiles/
+static/
+
+# =========================
+# Variables de entorno
+# =========================
+.env
+.env.*
+*.env
+
+# =========================
+# Archivos de IDE
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# =========================
+# Archivos del sistema
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# Cobertura y testing
+# =========================
+.coverage
+htmlcov/
+.tox/
+.pytest_cache/
+
+# =========================
+# Migraciones (opcional)
+# =========================
+# */migrations/*
+# !*/migrations/__init__.py
+
+# =========================
+# Archivos temporales
+# =========================
+*.bak
+*.tmp

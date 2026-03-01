@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reto de 7 Días – La Semana de la Luz</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .reto-semana {
+      background: rgba(255,255,255,0.92);
+      border-radius: 1.2em;
+      box-shadow: 0 2px 16px #0002;
+      padding: 1.5em 1.2em 1.2em 1.2em;
+      margin: 2em auto 2em auto;
+      max-width: 420px;
+      text-align: left;
+    }
+    .reto-semana h3 {
+      color: #1b2f7a;
+      font-size: 1.2em;
+      margin-bottom: 1em;
+    }
+    .reto-list label {
+      font-size: 1em;
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.5em;
+      cursor: pointer;
+    }
+    .reto-chk {
+      margin-right: 0.7em;
+      accent-color: #ffe066;
+    }
+    .star {
+      font-size: 1.2em;
+      margin-left: 0.5em;
+      color: #ffe066;
+      transition: color 0.2s;
+    }
+    .reto-chk:checked + .star {
+      color: #ffe066;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <section class="reto-semana">
+    <h3>📦 6️⃣ RETO DE 7 DÍAS – LA SEMANA DE LA LUZ</h3>
+    <div class="reto-list" id="retoList">
+      <label><input type="checkbox" class="reto-chk"> Día 1 – Sonreír primero <span class="star">☆</span></label><br>
+      <label><input type="checkbox" class="reto-chk"> Día 2 – Decir gracias <span class="star">☆</span></label><br>
+      <label><input type="checkbox" class="reto-chk"> Día 3 – Esperar sin enfadarme <span class="star">☆</span></label><br>
+      <label><input type="checkbox" class="reto-chk"> Día 4 – Ayudar en casa <span class="star">☆</span></label><br>
+      <label><input type="checkbox" class="reto-chk"> Día 5 – Escuchar con atención <span class="star">☆</span></label><br>
+      <label><input type="checkbox" class="reto-chk"> Día 6 – Rezar 1 minuto <span class="star">☆</span></label><br>
+      <label><input type="checkbox" class="reto-chk"> Día 7 – Encender una vela <span class="star">☆</span></label>
+    </div>
+    <div id="reto-completado" style="display:none;margin-top:1em;font-size:1.3em;color:#ffe066;text-shadow:0 2px 12px #ffe06688;">🏆 ¡Tu corazón brilla fuerte!</div>
+  </section>
+  <script>
+    // Reto de 7 días: marcar estrellas y mostrar mensaje al completar
+    document.addEventListener("DOMContentLoaded", () => {
+      const retoChecks = document.querySelectorAll('.reto-chk');
+      const retoCompletado = document.getElementById('reto-completado');
+      retoChecks.forEach(chk => {
+        chk.addEventListener('change', () => {
+          // Cambia estrella
+          const star = chk.parentElement.querySelector('.star');
+          star.textContent = chk.checked ? '★' : '☆';
+          // Si todos están marcados, mostrar mensaje
+          if ([...retoChecks].every(c => c.checked)) {
+            retoCompletado.style.display = 'block';
+          } else {
+            retoCompletado.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

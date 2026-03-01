@@ -1,0 +1,727 @@
+/* DOMINGO 1 */
+
+.reto-ritual-container {
+    position: fixed;
+    top: 4.5em;
+    left: 1.2em;
+    z-index: 1201;
+    display: flex;
+    gap: 1em;
+}
+.reto-icon {
+    position: static;
+    text-decoration: none;
+    background: #ffe066;
+    color: #1b2f7a;
+    border-radius: 50%;
+    padding: 0.6em 0.7em;
+    font-size: 1.5em;
+    box-shadow: 0 2px 8px #0002;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+.reto-icon:hover {
+    background: #fffbe6;
+    color: #0077cc;
+    transform: scale(1.15) rotate(-10deg);
+}
+.reto-popup {
+    display: none;
+    position: fixed;
+    top: 60px;
+    right: 2em;
+    z-index: 1300;
+    background: rgba(255,255,255,0.98);
+    border-radius: 1.2em;
+    box-shadow: 0 8px 32px #0004;
+    padding: 1.5em 1.2em 1.2em 1.2em;
+    max-width: 420px;
+    min-width: 320px;
+    animation: retoPopIn 0.5s;
+}
+@keyframes retoPopIn {
+    0% { opacity: 0; transform: scale(0.7) translateY(-40px); }
+    60% { opacity: 1; transform: scale(1.1) translateY(10px); }
+    100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+.reto-popup.active {
+    display: block;
+    animation: retoPopIn 0.5s;
+}
+.reto-icon:hover {
+    background: #fffbe6;
+    color: #0077cc;
+}
+/* Mostrar tooltip personalizado al hacer hover sobre .reto-icon */
+.reto-icon::after {
+    content: 'El Reto Semanal';
+    position: absolute;
+    right: 110%;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #1b2f7a;
+    color: #ffe066;
+    padding: 0.4em 0.9em;
+    border-radius: 0.7em;
+    white-space: nowrap;
+    font-size: 1em;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s, right 0.2s;
+    z-index: 2000;
+    box-shadow: 0 2px 8px #0002;
+}
+.reto-icon:hover::after {
+    opacity: 1;
+    right: 120%;
+}
+/* Mostrar tooltip debajo del botón al hacer hover */
+.reto-icon::after {
+    content: 'El Reto Semanal';
+    position: absolute;
+    left: 50%;
+    top: 120%;
+    transform: translateX(-50%);
+    background: #1b2f7a;
+    color: #ffe066;
+    padding: 0.4em 0.9em;
+    border-radius: 0.7em;
+    white-space: nowrap;
+    font-size: 1em;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s, top 0.2s;
+    z-index: 2000;
+    box-shadow: 0 2px 8px #0002;
+}
+.reto-icon:hover::after {
+    opacity: 1;
+    top: 140%;
+}
+/* Panel reto semana */
+.reto-semana {
+    background: rgba(255,255,255,0.92);
+    border-radius: 1.2em;
+    box-shadow: 0 2px 16px #0002;
+    padding: 1.5em 1.2em 1.2em 1.2em;
+    margin: 2em auto 2em auto;
+    max-width: 420px;
+    text-align: left;
+}
+.reto-semana h3 {
+    color: #1b2f7a;
+    font-size: 1.2em;
+    margin-bottom: 1em;
+}
+.reto-list label {
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5em;
+    cursor: pointer;
+}
+.reto-chk {
+    margin-right: 0.7em;
+    accent-color: #ffe066;
+}
+.star {
+    font-size: 1.2em;
+    margin-left: 0.5em;
+    color: #ffe066;
+    transition: color 0.2s;
+}
+.reto-chk:checked + .star {
+    color: #ffe066;
+    font-weight: bold;
+}
+/* Botón de pausar música */
+.music-btn {
+    position: fixed;
+    right: 1.2em;
+    bottom: 4.2em;
+    z-index: 1100;
+    background: #fff;
+    color: #333;
+    border: 1px solid #ccc;
+    border-radius: 2em;
+    padding: 0.5em 1.2em;
+    font-size: 1em;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+}
+.music-btn:hover {
+    background: #f0f8ff;
+    color: #0077cc;
+}
+
+/* =========================
+   RESET
+========================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, sans-serif;
+    overflow: hidden;
+    background: #000;
+}
+
+/* =========================
+   HERO
+========================= */
+.hero {
+    position: relative;
+    min-height: 100vh;
+    width: 100vw;
+    background: radial-gradient(circle at center, #1b2f7a 0%, #0a1a3f 60%, #000 100%);
+    color: white;
+    overflow: hidden;
+}
+
+/* Iluminación del cielo tras encender */
+.hero::after {
+    content:'';
+    position:absolute;
+    width:100%;
+    height:100%;
+    background: radial-gradient(circle at center, rgba(255,223,100,0.25), transparent 60%);
+    opacity:0;
+    transition: opacity 2s ease;
+    pointer-events:none;
+}
+
+.hero.litSky::after {
+    opacity:1;
+}
+
+/* =========================
+   ESTRELLAS
+========================= */
+.stars {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image:
+        radial-gradient(2px 2px at 20% 30%, #ffffff, transparent),
+        radial-gradient(3px 3px at 70% 60%, #ffd54f, transparent),
+        radial-gradient(2px 2px at 40% 80%, #ffffff, transparent),
+        radial-gradient(3px 3px at 80% 20%, #ffeb3b, transparent),
+        radial-gradient(2px 2px at 60% 40%, #ffffff, transparent);
+    animation: twinkle 6s ease-in-out infinite alternate;
+    opacity: 0.8;
+}
+
+@keyframes twinkle {
+    from { opacity: 0.5; }
+    to { opacity: 1; }
+}
+
+/* =========================
+   PARTÍCULAS
+========================= */
+.particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.particles span {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background: radial-gradient(circle, #ffffff, gold);
+    border-radius: 50%;
+    opacity: 0;
+    animation: float 14s linear infinite;
+}
+
+.particles span:nth-child(1){left:10%;animation-delay:0s;}
+.particles span:nth-child(2){left:25%;animation-delay:3s;}
+.particles span:nth-child(3){left:40%;animation-delay:6s;}
+.particles span:nth-child(4){left:55%;animation-delay:1s;}
+.particles span:nth-child(5){left:70%;animation-delay:4s;}
+.particles span:nth-child(6){left:85%;animation-delay:7s;}
+.particles span:nth-child(7){left:35%;animation-delay:2s;}
+.particles span:nth-child(8){left:65%;animation-delay:5s;}
+.particles span:nth-child(9){left:50%;animation-delay:8s;}
+
+@keyframes float {
+    0% { bottom:-20px; opacity:0; transform:translateX(0); }
+    10% { opacity:1; }
+    100% { bottom:110%; opacity:0; transform:translateX(25px); }
+}
+
+/* =========================
+   CONTENIDO + ZOOM
+========================= */
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    max-width: 360px;
+    padding: 20px;
+    transition: transform 8s ease, filter 4s ease;
+}
+
+.hero.zoomed .hero-content {
+    transform: scale(1.12);
+    filter: blur(1px);
+}
+
+/* =========================
+   VELA
+========================= */
+.candle {
+    width: 28em;
+    height: 80em;
+    font-size: 9px;
+    background: linear-gradient(orange, darkorange, sienna);
+    border-radius: 14em / 16em;
+    position: relative;
+    margin: 0 auto 40px auto;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    box-shadow: inset 2em -3em 5em rgba(0,0,0,0.4);
+}
+
+/* Parte superior */
+.candle::before {
+    content:'';
+    position:absolute;
+    width:100%;
+    height:5em;
+    border-radius:50%;
+    background: radial-gradient(#444, orange, saddlebrown);
+    filter:opacity(0.7);
+}
+
+/* Mecha */
+.thread {
+    position:absolute;
+    width:0.6em;
+    height:3.6em;
+    top:-1.8em;
+    left:50%;
+    transform:translateX(-50%);
+    background:black;
+    border-radius:40% 40% 0 0;
+}
+
+/* =========================
+   FLAMA
+========================= */
+.flames {
+    position:absolute;
+    width:2.4em;
+    left:50%;
+    transform:translateX(-50%);
+}
+
+/* Apagada inicialmente */
+.flames::after {
+    content:'';
+    position:absolute;
+    width:100%;
+    height:0;
+    top:0;
+    left:50%;
+    transform:translateX(-50%);
+    background: linear-gradient(white 60%, gold 85%, transparent);
+    border-radius:50% 50% 30% 30%;
+    transform-origin:bottom center;
+    opacity:0;
+}
+
+/* Encendido */
+.candle.lit .flames::after {
+    animation:
+        ignite 2s ease forwards,
+        flameMove 5s ease-in-out infinite 2s;
+}
+.candle.lit .glow {
+    animation:
+        glowAppear 2s ease forwards 1.5s,
+        glowPulse 6s ease-in-out infinite 3s;
+}
+
+@keyframes glowPulse {
+    0%,100% { filter: blur(8em) brightness(1); }
+    50% { filter: blur(9em) brightness(1.2); }
+}
+
+/* Encendido progresivo */
+@keyframes ignite {
+    0% { height:0; top:0; opacity:0; }
+    100% { height:12em; top:-12em; opacity:1; }
+}
+
+/* Movimiento suave */
+@keyframes flameMove {
+    0% {
+        transform: translateX(-50%) rotate(3deg) scaleY(1);
+    }
+
+    25% {
+        transform: translateX(-50%) rotate(-4deg) scaleY(1.05);
+    }
+
+    50% {
+        transform: translateX(-50%) rotate(4deg) scaleY(0.95);
+    }
+
+    75% {
+        transform: translateX(-50%) rotate(-3deg) scaleY(1.08);
+    }
+
+    100% {
+        transform: translateX(-50%) rotate(3deg) scaleY(1);
+    }
+}
+
+
+/* =========================
+   GLOW
+========================= */
+.glow {
+    position:absolute;
+    width:14em;
+    height:20em;
+    background: radial-gradient(circle, gold, transparent 70%);
+    border-radius:50%;
+    top:-18em;
+    left:50%;
+    transform:translateX(-50%);
+    filter:blur(8em);
+    opacity:0;
+}
+
+.candle.lit .glow {
+    animation: glowAppear 2s ease forwards 1.5s;
+}
+
+@keyframes glowAppear {
+    to { opacity:0.9; }
+}
+
+/* =========================
+   TEXTOS
+========================= */
+h1 {
+    font-size:1.2rem;
+    color:white;
+
+    margin-bottom:8px;
+    opacity:0.9;
+}
+
+h2 {
+    font-size:2rem;
+    color:#ffd54f;
+    margin-bottom:10px;
+}
+
+p {
+    font-size:1rem;
+    opacity:0.8;
+    margin-bottom:20px;
+}
+
+/* =========================
+   BOTÓN
+========================= */
+button {
+    padding: 14px 26px;
+    border-radius: 40px;
+    border: none;
+    font-size: 1rem;
+    background: #ffd54f;
+    color: #1b2f7a;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(255,213,79,0.5);
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+button:disabled {
+    opacity: 0.7;
+    cursor: default;
+}
+
+/* =========================
+   MÓVIL VERTICAL
+========================= */
+@media (max-width: 480px) {
+
+    .hero-content {
+        max-width: 90%;
+    }
+
+    .candle {
+        font-size: 6px;
+    }
+
+    h1 { font-size: 1rem; 
+    color: white;
+    }
+    h2 { font-size: 1.6rem; }
+    p  { font-size: 0.9rem; }
+
+    button {
+        width: 100%;
+        max-width: 260px;
+    }
+}
+/* =========================
+   EXPLOSIÓN MÁGICA
+========================= */
+
+.magic-star {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: radial-gradient(circle, #fff, gold);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: burst 1.2s ease-out forwards;
+}
+
+@keyframes burst {
+    0% {
+        opacity: 1;
+        transform: translate(0, 0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(var(--x), var(--y)) scale(0.5);
+    }
+}
+
+/* =========================
+   TEXTO FINAL
+========================= */
+
+.final-message {
+    position: absolute;
+    bottom: 12%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 1.2rem;
+    color: #ffd54f;
+    opacity: 0;
+    transition: opacity 3s ease;
+    text-shadow: 0 0 10px rgba(255,215,0,0.6);
+}
+
+.final-message.show {
+    opacity: 1;
+}
+
+nav {
+    min-height: 60px;
+    height: 4em;
+    display: flex;
+    align-items: center;
+}
+
+.reto-popup .close-btn,
+.ritual-popup .close-btn {
+    position: absolute;
+    top: 0.5em;
+    right: 0.7em;
+    font-size: 1.7em;
+    color: #e53935;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1400;
+    padding: 0;
+    line-height: 1;
+    transition: color 0.2s, background 0.2s;
+}
+.reto-popup .close-btn:hover,
+.ritual-popup .close-btn:hover {
+    color: #fff;
+    background: #e53935;
+}
+
+.bottom-menu {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255,255,255,0.95);
+    height: 120px;
+    z-index: 1000;
+    min-height: 68px;
+    pointer-events: none;
+}
+.bottom-menu-fan {
+    position: relative;
+    width: 100vw;
+    height: 120px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    pointer-events: none;
+}
+.bottom-menu-fan a {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform-origin: bottom center;
+    pointer-events: auto;
+    opacity: 0;
+    transform: translateX(-50%) scale(0.7) rotate(0deg);
+    transition: transform 0.5s cubic-bezier(.4,2,.6,1), opacity 0.4s;
+}
+.bottom-menu-fan.open a {
+    opacity: 1;
+    pointer-events: auto;
+}
+.bottom-menu-fan.open a:nth-child(1) {
+    transform: translateX(-50%) rotate(-40deg) translateY(-10px) scale(1);
+    transition-delay: 0.05s;
+}
+.bottom-menu-fan.open a:nth-child(2) {
+    transform: translateX(-50%) rotate(-20deg) translateY(-5px) scale(1);
+    transition-delay: 0.10s;
+}
+.bottom-menu-fan.open a:nth-child(3) {
+    transform: translateX(-50%) rotate(0deg) scale(1);
+    transition-delay: 0.15s;
+}
+.bottom-menu-fan.open a:nth-child(4) {
+    transform: translateX(-50%) rotate(20deg) translateY(-5px) scale(1);
+    transition-delay: 0.20s;
+}
+.bottom-menu-fan.open a:nth-child(5) {
+    transform: translateX(-50%) rotate(40deg) translateY(-10px) scale(1);
+    transition-delay: 0.25s;
+}
+.bottom-menu-fan a:nth-child(1) {
+    transform: translateX(-50%) rotate(-40deg) translateY(-10px);
+}
+.bottom-menu-fan a:nth-child(2) {
+    transform: translateX(-50%) rotate(-20deg) translateY(-5px);
+}
+.bottom-menu-fan a:nth-child(3) {
+    transform: translateX(-50%) rotate(0deg);
+}
+.bottom-menu-fan a:nth-child(4) {
+    transform: translateX(-50%) rotate(20deg) translateY(-5px);
+}
+.bottom-menu-fan a:nth-child(5) {
+    transform: translateX(-50%) rotate(40deg) translateY(-10px);
+}
+.bottom-menu a {
+    font-size: 1.3em;
+}
+
+main {
+    width: 100vw;
+    min-height: 100vh;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: stretch;
+    box-sizing: border-box;
+}
+
+.ritual-icon {
+    position: static;
+    text-decoration: none;
+    background: #1b2f7a;
+    color: #fffbe6;
+    border-radius: 50%;
+    padding: 0.6em 0.7em;
+    font-size: 1.5em;
+    box-shadow: 0 2px 8px #0002;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+.ritual-icon:hover {
+    background: #0077cc;
+    color: #ffe066;
+    transform: scale(1.15) rotate(-10deg);
+}
+.ritual-icon::after {
+    content: 'Ritual Familiar';
+    position: absolute;
+    left: 50%;
+    top: 120%;
+    transform: translateX(-50%);
+    background: #0077cc;
+    color: #fffbe6;
+    padding: 0.4em 0.9em;
+    border-radius: 0.7em;
+    white-space: nowrap;
+    font-size: 1em;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s, top 0.2s;
+    z-index: 2000;
+    box-shadow: 0 2px 8px #0002;
+}
+.ritual-icon:hover::after {
+    opacity: 1;
+    top: 140%;
+}
+
+.ritual-popup {
+    display: none;
+    position: fixed;
+    top: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1300;
+    background: rgba(255,255,255,0.98);
+    border-radius: 1.2em;
+    box-shadow: 0 8px 32px #0004;
+    padding: 1.5em 1.2em 1.2em 1.2em;
+    max-width: 600px;
+    min-width: 420px;
+    animation: retoPopIn 0.5s;
+}
+.ritual-popup.active {
+    display: block;
+    animation: retoPopIn 0.5s;
+}
+.ritual-semana h3 {
+    color: #0077cc;
+    font-size: 1.2em;
+    margin-bottom: 1em;
+    text-align: center;
+}
+
+/* Centrado horizontal y vertical para la vela */
+.vela-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 40px 0 30px 0;
+  z-index: 10;
+}
+
+/* Sombra y resplandor para la vela */
+.candle {
+  box-shadow: 0 8px 32px #ffd54f55, 0 2px 12px #0003, 0 0 60px 10px #ffe06633;
+}

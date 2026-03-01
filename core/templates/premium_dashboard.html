@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container" style="max-width: 800px; margin: 0 auto; padding: 20px;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+        <h1>✨ Dashboard Premium</h1>
+        <a href="{% url 'dashboard' %}" style="text-decoration: none; color: #667eea;">← Volver</a>
+    </div>
+
+    {% if messages %}
+        {% for message in messages %}
+        <div style="padding: 12px; margin-bottom: 20px; border-radius: 6px; background: {% if message.tags == 'success' %}#d4edda{% elif message.tags == 'error' %}#f8d7da{% else %}#d1ecf1{% endif %}; color: {% if message.tags == 'success' %}#155724{% elif message.tags == 'error' %}#721c24{% else %}#0c5460{% endif %};">
+            {{ message }}
+        </div>
+        {% endfor %}
+    {% endif %}
+
+    <div style="background: white; padding: 25px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); margin-bottom: 30px;">
+        <h2 style="margin-top: 0; color: #667eea;">➕ Agregar niño</h2>
+        <form method="post" style="display: grid; gap: 15px;">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="login-btn" style="width: fit-content;">Guardar niño</button>
+        </form>
+    </div>
+
+    <div style="background: white; padding: 25px; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+        <h2 style="margin-top: 0; color: #667eea;">👶 Mis niños registrados</h2>
+        {% if ninos %}
+            <div style="display: grid; gap: 15px;">
+                {% for nino in ninos %}
+                <div style="padding: 15px; background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%); border-radius: 8px; border-left: 4px solid #667eea;">
+                    <div style="font-weight: bold; font-size: 1.1em; margin-bottom: 5px;">{{ nino.nombre }}</div>
+                    <div style="color: #666; font-size: 0.9em;">
+                        {% if nino.genero %}{{ nino.get_genero_display }}{% endif %}
+                        {% if nino.fecha_nacimiento %}
+                            {% if nino.genero %} • {% endif %}
+                            📅 {{ nino.fecha_nacimiento|date:"d/m/Y" }}
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p style="color: #999; font-style: italic;">No tienes niños registrados aún. Usa el formulario de arriba para agregar uno.</p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

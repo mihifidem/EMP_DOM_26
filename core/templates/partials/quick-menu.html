@@ -1,0 +1,120 @@
+<div class="quick-menu" style="position: fixed; right: 24px; bottom: 24px; z-index: 9999;">
+    <style>
+        .quick-actions {
+            position: absolute;
+            right: 0;
+            bottom: 58px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            opacity: 0;
+            transform: translateY(8px);
+            pointer-events: none;
+            transition: all 0.2s ease;
+        }
+        .quick-menu:not(.anchored):hover .quick-actions {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        .quick-menu.anchored .quick-actions {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+        }
+        .quick-btn {
+            width: 46px;
+            height: 46px;
+            border: none;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #48c6ef 0%, #6f86d6 100%);
+            transition: transform 0.2s, box-shadow 0.2s, opacity 0.3s ease;
+        }
+        .quick-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+        }
+        .quick-main {
+            width: 52px;
+            height: 52px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+    </style>
+
+    <div class="quick-actions">
+        <button id="btn-sound" class="quick-btn" title="Sonido">🔊</button>
+        <button id="btn-chat" class="quick-btn" title="Chatbot">💬</button>
+        <button id="btn-back" class="quick-btn" title="Volver">↩️</button>
+    </div>
+    <button class="quick-btn quick-main" title="Acciones">☰</button>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var quickMenu = document.querySelector('.quick-menu');
+        var mainBtn = document.querySelector('.quick-main');
+        var soundBtn = document.getElementById('btn-sound');
+        var chatBtn = document.getElementById('btn-chat');
+        var backBtn = document.getElementById('btn-back');
+        var muted = false;
+        var isAnchored = false;
+
+        // Toggle anchor/unanchor en click del botón principal
+        if (mainBtn) {
+            mainBtn.addEventListener('click', function () {
+                isAnchored = !isAnchored;
+                if (isAnchored) {
+                    quickMenu.classList.add('anchored');
+                } else {
+                    quickMenu.classList.remove('anchored');
+                }
+            });
+        }
+
+        // Cerrar menú al hacer click en cualquier botón de acción
+        function closeMenu() {
+            isAnchored = false;
+            quickMenu.classList.remove('anchored');
+        }
+
+        if (soundBtn) {
+            soundBtn.addEventListener('click', function () {
+                muted = !muted;
+                document.querySelectorAll('audio, video').forEach(function (media) {
+                    media.muted = muted;
+                });
+                soundBtn.textContent = muted ? '🔇' : '🔊';
+                closeMenu();
+            });
+        }
+
+        if (chatBtn) {
+            chatBtn.addEventListener('click', function () {
+                alert('Aquí se abriría el chatbot. (Integración pendiente)');
+                closeMenu();
+            });
+        }
+
+        if (backBtn) {
+            backBtn.addEventListener('click', function () {
+                window.history.back();
+                closeMenu();
+            });
+        }
+
+        // Cerrar menú al hacer click fuera
+        document.addEventListener('click', function (e) {
+            if (!quickMenu.contains(e.target) && isAnchored) {
+                closeMenu();
+            }
+        });
+    });
+</script>

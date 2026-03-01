@@ -1,0 +1,578 @@
+                                          
+
+                       
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+{% if nino_nombre %}
+<div onclick="window.location.href='{% url 'select-nino' %}?next={{ request.path }}'" style="position: fixed; top: 70px; right: 20px; z-index: 9998; background: linear-gradient(135deg, #48c6ef 0%, #6f86d6 100%); color: white; padding: 10px 20px; border-radius: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); font-weight: bold; display: flex; align-items: center; gap: 8px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 6px 16px rgba(0,0,0,0.4)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.3)';">
+    <span style="font-size: 1.2em;">👶</span>
+    <span>{{ nino_nombre }}</span>
+    <span style="margin-left: 8px; background: rgba(255,255,255,0.3); padding: 4px 12px; border-radius: 12px; font-size: 0.9em; display: flex; align-items: center; gap: 4px;">
+        ⭐ {{ puntos_totales }}
+    </span>
+</div>
+{% endif %}
+
+<!--main starts-->
+<div id="main">
+    {% include 'partials/breadcrumb.html' with breadcrumb_title="I Domingo de Adviento - Esperanza" breadcrumb_items=breadcrumb_items %}
+    <!--container starts-->
+    <div class="container">
+
+        <!-- Hero section con fondo negro -->
+        <section class="hero-black" style="background: #000; color: #fff; padding: 60px 0; text-align: center;">
+            
+            
+            <audio id="audio-vela" src="/static/musica/01/DOM01_C01.mp3"></audio>
+            <div class="container-vela">
+                <div class="candle">
+                    <span class="glow"></span>
+                    <span class="flames"></span>
+                    <span class="smoke" id="smoke1"></span>
+                    <span class="smoke" id="smoke2"></span>
+                    <span class="thread"></span>
+                </div>
+            </div>
+            <button id="btn-encender"
+                style="margin-top: 30px; padding: 10px 30px; font-size: 1.2em; background: #ffcc00; color: #222; border: none; border-radius: 6px; cursor: pointer;">Encender
+                vela</button>
+            <script>
+                // Chatbot button logic
+                var chatbotBtn = document.getElementById('btn-chatbot');
+                if (chatbotBtn) {
+                    chatbotBtn.addEventListener('click', function () {
+                        alert('Aquí se abriría el chatbot. (Integración pendiente)');
+                    });
+                }
+                document.addEventListener('DOMContentLoaded', function () {
+                    // Mute button logic
+                    var muteBtn = document.getElementById('btn-mute');
+                    var muteIcon = document.getElementById('mute-icon');
+                    var audio = document.getElementById('audio-vela');
+                    var muted = false;
+                    if (muteBtn && muteIcon && audio) {
+                        muteBtn.addEventListener('click', function () {
+                            muted = !muted;
+                            audio.muted = muted;
+                            if (muted) {
+                                muteIcon.classList.remove('fa-volume-up');
+                                muteIcon.classList.add('fa-volume-mute');
+                            } else {
+                                muteIcon.classList.remove('fa-volume-mute');
+                                muteIcon.classList.add('fa-volume-up');
+                            }
+                        });
+                    }
+                    var btn = document.getElementById('btn-encender');
+                    var flame = document.querySelector('.flames');
+                    var glow = document.querySelector('.glow');
+                    var encendida = false;
+                    flame.style.opacity = 0;
+                    glow.classList.add('glow-off');
+                    var smoke1 = document.getElementById('smoke1');
+                    var smoke2 = document.getElementById('smoke2');
+                    smoke1.style.opacity = 0;
+                    smoke2.style.opacity = 0;
+                    // var audio ya definida arriba
+                    btn.addEventListener('click', function () {
+                        encendida = !encendida;
+                        if (encendida) {
+                            flame.style.opacity = 1;
+                            glow.classList.remove('glow-off');
+                            glow.classList.add('glow-on');
+                            smoke1.style.opacity = 0;
+                            smoke2.style.opacity = 0;
+                            btn.innerText = 'Apagar vela';
+                            if (audio) {
+                                audio.currentTime = 0;
+                                audio.play();
+                            }
+                        } else {
+                            flame.style.opacity = 0;
+                            glow.classList.remove('glow-on');
+                            glow.classList.add('glow-off');
+                            // Efecto de humo al apagar (con retardo para simular que sale de la mecha)
+                            setTimeout(function () {
+                                smoke1.style.opacity = 0.7;
+                                smoke2.style.opacity = 0.5;
+                                smoke1.style.animation = 'smokeUp 2.5s linear forwards';
+                                smoke2.style.animation = 'smokeUp 2.2s linear forwards';
+                                setTimeout(function () {
+                                    smoke1.style.opacity = 0;
+                                    smoke2.style.opacity = 0;
+                                    smoke1.style.animation = '';
+                                    smoke2.style.animation = '';
+                                }, 2500);
+                            }, 600);
+                            btn.innerText = 'Encender vela';
+                        }
+                    });
+                });
+            </script>
+        </section>
+
+
+
+        </section>
+        <!--primary/secondary flex layout starts-->
+        <div class="main-flex">
+        <section id="primary">
+
+            <article class="blog-entry">
+                <div class="blog-entry-inner">
+                    <div class="entry-meta">
+                        <div class="date">
+                            <span> Esperanza</span>
+                            <!-- <p> Adviento </p>  -->
+                        </div>
+                        <a href="#" class="comments">
+                            12 <span class="fa fa-eye"> </span>
+                        </a>
+                        <a href="#" class="entry_format"><span class="fa fa-headphones"></span></a>
+                    </div>
+                    <div class="entry-thumb">
+                        <a href="#"><img src="http://via.placeholder.com/1170x711" alt="" title=""></a>
+                    </div>
+                    <img src="{% static 'images/hero/apostoles_12.png' %}" alt="" title="">
+
+                    <div class="entry-details">
+                        <div class="entry-title">
+                            <h3> La Esperanza empieza a brillar </h3>
+                        </div>
+                        <blockquote class="alignright pink">
+                            <q>Jesús,
+                                ven a nuestro corazón
+                                y enséñanos a esperar con alegría.
+                                Amén.</q>
+                        </blockquote>
+                        <!--entry-metadata ends-->
+                        <div class="entry-body">
+                            <p>Hoy comienza un tiempo muy especial en la Iglesia.<br>
+                                Un tiempo que no es como los demás.<br>
+                                Un tiempo que no corre… un tiempo que espera.<br>
+                                <br>
+                                Se llama Adviento.<br>
+                                <br>
+                                Adviento significa espera.<br>
+                                Pero no es una espera aburrida.<br>
+                                No es una espera impaciente.<br>
+                                Es una espera con ilusión.<br>
+                                <br>
+                                Es como cuando sabes que viene alguien muy querido a tu casa.<br>
+                                Preparas la habitación.<br>
+                                Ordenas un poco.<br>
+                                Miras por la ventana.<br>
+                                Y sonríes, porque sabes que está por llegar.<br>
+                                <br>
+                                Eso es el Adviento.<br>
+                            </p>
+                            <!-- <blockquote class="alignright">
+                                <q>A veces no vemos todo claro.
+                                    A veces tenemos miedo o nos sentimos pequeños.
+                                    Pero Dios nos recuerda algo muy importante:
+
+                                    La luz siempre vuelve a brillar.
+
+                                    Cada gesto bueno que haces,
+                                    cada abrazo que das,
+                                    cada vez que perdonas,
+                                    enciende una pequeña luz en el mundo.
+
+                                    Esta semana, intenta ser luz.
+                                    Sonríe primero.
+                                    Escucha con atención.
+                                    Confía aunque no lo entiendas todo.
+
+                                    Porque algo bonito está empezando…
+                                    y la esperanza ya ha comenzado.</q>
+                            </blockquote> -->
+                        </div>
+                        <div class="entry-title">
+                            <h3> Para recordar esta semana </h3>
+                        </div>
+                        <!--entry-metadata ends-->
+                        <div class="entry-body">
+                            <p>Cuando veas una vela encendida, piensa:<br>
+
+                                Jesús viene.<br>
+
+                                La luz es más fuerte que la oscuridad.<br>
+
+                                Yo también puedo ser luz.<br>
+                                Y cada noche puedes decir:<br>
+
+                            <blockquote class="pink">
+                                <q>Jesús, enséñame a esperar con confianza. Enciende en mí la esperanza.
+                                    Amén.<br></q>
+                            </blockquote>
+
+                            </p>
+
+                        </div>
+                    </div>
+            </article>
+            <!--commententries starts-->
+            <div class="commententries">
+                <h2 class="dt-sc-hr-green-title"> Citas bíblicas </h2>
+                <h2 class="dt-sc-title"><span>Los Evangelistas</span></h2>
+                <div class="evangelistas">
+                    <img src="{% static 'images/hero/Lc.png' %}" alt="Lucas" title="">
+                    <img src="{% static 'images/hero/Jn.png' %}" alt="Juan" title="">
+                    <img src="{% static 'images/hero/Mt.png' %}" alt="Mateo" title="">
+                    <img src="{% static 'images/hero/Mc.png' %}" alt="Marcos" title="">
+
+                </div>
+
+
+                <ul class="commentlist">
+                    <li>
+                        <article class="comment">
+                            <header class="comment-author">
+                                <img class="item-mask" src="{% static 'images/hero/Lc_avatar.png' %}" alt="" title="">
+                                <!-- <img src="http://via.placeholder.com/119x101" alt="" title=""> -->
+                            </header>
+                            <section class="comment-details">
+                                <div class="author-name">
+                                    <a href="">(Is 9,1 – adaptado para niños)</a>
+                                </div>
+                                <!-- <div class="commentmetadata">21 Nov 2012</div> -->
+                                <div class="comment-body">
+                                    <div class="comment-content">
+                                        <p>“El pueblo que caminaba en la oscuridad
+                                            vio una gran luz.
+                                            A los que vivían con miedo,
+                                            les brilló una esperanza.”</p>
+                                    </div>
+                                </div>
+                                <!-- <div class="reply">
+                                    <a class="comment-reply-link" href="">Reply <span
+                                            class="fa fa-angle-double-right"></span></a>
+                                </div> -->
+                            </section>
+                        </article>
+                        <!-- <ul class="children">
+                            <li>
+                                <article class="comment">
+                                    <header class="comment-author">
+                                        <img class="item-mask" src="{% static 'images/author-hexa-bg.png' %}" alt=""
+                                            title="">
+                                        <img src="http://via.placeholder.com/119x101" alt="" title="">
+                                    </header>
+                                    <section class="comment-details">
+                                        <div class="author-name">
+                                            <a href="">Lilly Dafoe</a>
+                                        </div>
+                                        <div class="commentmetadata">21 Nov 2012</div>
+                                        <div class="comment-body">
+                                            <div class="comment-content">
+                                                <p>To take a trivial example, which of us ever undertakes laborious
+                                                    physical exercise, except to obtain some advantage from it? But who
+                                                    has any right to find fault with a man who chooses to enjoy a
+                                                    pleasure.</p>
+                                            </div>
+                                        </div>
+                                        <div class="reply">
+                                            <a class="comment-reply-link" href="">Reply <span
+                                                    class="fa fa-angle-double-right"></span></a>
+                                        </div>
+                                    </section>
+                                </article>
+                            </li>
+                        </ul> -->
+                    </li>
+                    <li>
+                        <article class="comment">
+                            <header class="comment-author">
+                                <img class="item-mask" src="{% static 'images/hero/Mc_avatar.png' %}" alt="" title="">
+                                <!-- <img src="http://via.placeholder.com/119x101" alt="" title=""> -->
+                            </header>
+                            <section class="comment-details">
+                                <div class="author-name">
+                                    <a href="">(Mc 13,33 – adaptado para niños)</a>
+                                </div>
+                                <!-- <div class="commentmetadata">21 Nov 2012</div> -->
+                                <div class="comment-body">
+                                    <div class="comment-content">
+                                        <p>“Estad atentos y vigilad, porque algo muy bonito está por llegar.”</p>
+                                    </div>
+                                </div>
+                                <!-- <div class="reply">
+                                    <a class="comment-reply-link" href="">Reply <span
+                                            class="fa fa-angle-double-right"></span></a>
+                                </div> -->
+                            </section>
+                        </article>
+                    </li>
+                </ul>
+                <!-- <div id="respond" class="comment-respond">
+                    <br>
+                    <h2>Mándanos tús comentarios</h2>
+                    <form method="post" action="#" id="commentform" class="comment-form">
+                        <p class="column dt-sc-one-half first">
+                            <input id="author" name="author" type="text" placeholder="Nombre" required="">
+                        </p>
+                        <p class="column dt-sc-one-half">
+                            <input id="email" name="email" type="email" placeholder="Correo electrónico" required="">
+                        </p>
+                        <p>
+                            <textarea id="comment" name="comment" placeholder="Message"></textarea>
+                        </p>
+                        <p>
+                            <input name="submit" type="submit" id="submit" value="Enviar comentario">
+                        </p>
+                    </form>
+                </div> -->
+
+            </div>
+            <!--commententries ends-->
+                    <div style="width:100%;text-align:center;margin-bottom:1em;">
+                                            <h2 class="dt-sc-hr-green-title" style="margin-bottom: 0; text-align:center;">🕯️ Para los padres </h2>
+
+                        <img src="{% static 'images/hero/gely_family.png' %}" alt="familia" style="max-width: 300px; width: 100%; height: auto;">
+                    </div>
+                
+            <div class="padres-ritual">
+           
+                <h3>El sentido del ritual de encender la vela (I Domingo de Adviento)</h3>
+
+                <p>
+                    El gesto de encender una vela no es solo algo simbólico o decorativo.
+                    Es un pequeño acto que ayuda a los niños a comprender con el cuerpo
+                    lo que celebramos con el corazón.
+                </p>
+
+                <p>
+                    En Adviento enseñamos a esperar.
+                    Pero los niños no entienden bien una “espera abstracta”.
+                    Necesitan un gesto visible, repetible y sencillo.
+                </p>
+
+                <p>
+                    La vela cumple tres funciones educativas y espirituales:
+                </p>
+
+                <h4>1️⃣ Hace visible la esperanza</h4>
+                <p>
+                    La luz rompe la oscuridad.
+                    El niño entiende que algo bueno está por venir.
+                </p>
+
+                <h4>2️⃣ Crea memoria afectiva</h4>
+                <p>
+                    Si cada domingo encendéis la vela juntos,
+                    ese gesto quedará asociado a calma, familia y fe.
+                </p>
+
+                <h4>3️⃣ Introduce el ritmo litúrgico en casa</h4>
+                <p>
+                    No se trata de hacer algo perfecto, sino constante.
+                    Un gesto pequeño repetido cada semana construye identidad espiritual.
+                </p>
+
+                <hr>
+
+                <h3>🏠 Cómo hacerlo en casa (muy sencillo)</h3>
+
+                <ul>
+                    <li>Una vela sencilla (no hace falta corona elaborada).</li>
+                    <li>Un momento breve (3–5 minutos).</li>
+                    <li>Una frase común que se repita cada domingo.</li>
+                </ul>
+
+                <blockquote class="pink">
+                    Jesús, esperamos tu luz.<br>
+                    Ven a nuestra casa y a nuestro corazón.
+                </blockquote>
+
+                <p>
+                    No hace falta explicación larga.
+                    El silencio y la repetición educan más que muchos discursos.
+                </p>
+
+                <hr>
+
+                <h3>💛 Lo importante</h3>
+
+                <p>
+                    No es el objeto.<br>
+                    No es la estética.<br>
+                    Es el clima que se crea.
+                </p>
+
+                <p>
+                    Si el niño percibe paz, cercanía y sentido,
+                    el Adviento habrá comenzado de verdad en casa.
+                </p>
+            </div>
+            <h2 class="dt-sc-hr-green-title">🕯️ Nos vemos en el próximo domingo</h2>
+
+
+        </section>
+        <!--primary ends-->
+        <!--secondary starts-->
+        <section id="secondary">
+
+                        <aside class="widget widget_categories">
+                                <h3 class="widgettitle">Secciones</h3>
+                                <ul>
+                                        <li>
+                                                <a href="/domingo/1/canciones">Canciones</a>
+                                        </li>
+                                         <li>
+                                                <a href="/domingo/1/microhistoria">Microhistoria</a>
+                                        </li>
+                                        <li>
+                                                <a href="/domingo/1/karaoke">Karaoke</a>
+                                        </li>
+                                        <li>
+                                                <a href="/domingo/1/game">Juego</a>
+                                        </li>
+                                           <li>
+                                                <a href="/domingo/1/infografia">Infografía</a>
+                                        </li>
+                                        <!-- <li style="border-left: 3px solid #48c6ef;">
+                                                <a href="{% url 'seccion-tareas' 1 %}" style="color: #667eea; font-weight: 600;">📝 Mis Tareas</a>
+                                        </li> -->
+                                </ul>
+                                <div class="widget reto-semanal" style="margin-top:2em;">
+                                <h3 class="widgettitle">📝 Tareas Pendientes</h3>
+                                    <div id="tareas-container">
+                                        {% if tareas_progreso %}
+                                            {% for item in tareas_progreso %}
+                                            <label class="tarea-item {% if item.completada %}completada{% endif %}" style="display:flex;align-items:center;gap:0.5em;margin-bottom:0.7em;padding:8px;border-radius:8px;transition:all 0.3s;cursor:pointer;{% if item.completada %}background:#f0f9ff;opacity:0.7;{% endif %}" data-tarea-id="{{ item.tarea.id }}">
+                                                <input type="checkbox" {% if item.completada %}checked{% endif %} onchange="toggleTareaWidget({{ item.tarea.id }}, this)" style="cursor:pointer;width:18px;height:18px;">
+                                                <span style="flex:1;">{{ item.tarea.titulo }}</span>
+                                                {% if item.completada and item.fecha_completado %}
+                                                <small style="color:#059669;font-size:0.75em;">✓</small>
+                                                {% endif %}
+                                            </label>
+                                            {% endfor %}
+                                        {% else %}
+                                            <p style="color:#999;font-size:0.9em;text-align:center;padding:1em 0;">No hay tareas asignadas</p>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                        </aside>
+
+                        <aside class="widget widget_text">
+                <h3 class="widgettitle">El vídeo</h3>
+                <p>En este video hablaremos sobre el significado del I Domingo de Adviento, el inicio de un tiempo de esperanza y preparación para la llegada de Jesús.</p>
+                <video width="420" controls style="max-width: 100%; border-radius: 8px;">
+                    <source src="{% static 'images/extra/01/DOM01PR01.mp4' %}" type="video/mp4">
+                    Tu navegador no soporta el elemento de video.
+                </video>
+            </aside>
+
+
+           
+
+
+            <aside class="widget widget_tag_cloud">
+                <h3 class="widgettitle">Hashtags</h3>
+                <div class="tagcloud ">
+                    <a href="">Conversión</a>
+                    <a href="">Esperanza</a>
+                    <a href="">Preparación</a>
+                    <a href="">Camino</a>
+   
+                </div>
+            </aside>
+
+          <aside class="widget widget_escape_room" style="margin-top:2em; background: linear-gradient(120deg,#f3e7ff 60%,#e0e7ff 100%); border-radius: 1.2em; box-shadow: 0 2px 12px #c328f122; padding: 1.2em 1em; text-align: center;">
+                                <h3 class="widgettitle" style="color:#7b2ff2; margin-bottom:0.7em;">Escape Room</h3>
+                                <div style="font-size:1.08em; color:#4a2fa7; margin-bottom:1.1em;">
+                                    ¿Te atreves a resolver los enigmas del <b>I Domingo de Adviento</b>?<br>
+                                    Pon a prueba tu ingenio y descubre el mensaje secreto de la esperanza.
+                                </div>
+                                <a href="/domingo/1/escape-room" style="display:inline-block; background:linear-gradient(90deg,#c328f1 0%,#7b2ff2 100%); color:#fff; font-weight:bold; border-radius:2em; padding:0.7em 2em; font-size:1.1em; box-shadow:0 2px 8px #c328f155; text-decoration:none; transition:background 0.2s,transform 0.2s; margin-top:0.5em;">
+                                    ¡Entrar al Escape Room!
+                                </a>
+                        </aside>
+        </section>
+        <!--secondary ends-->
+        </div>
+
+    </div>
+    <!--container ends-->
+</div>
+<!--main ends-->
+    {% include 'partials/quick-menu.html' %}
+
+{% block extra_js %}
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/jquery-ui.min.js' %}"></script>
+<script src="{% static 'js/shortcodes.js' %}"></script>
+
+<script>
+// Función para toggle de tareas en el widget
+function toggleTareaWidget(tareaId, checkbox) {
+    const label = checkbox.closest('.tarea-item');
+    
+    fetch(`/tarea/${tareaId}/toggle/`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'X-CSRFToken': getCookie('csrftoken')
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            if (data.completada) {
+                label.classList.add('completada');
+                label.style.background = '#f0f9ff';
+                label.style.opacity = '0.7';
+            } else {
+                label.classList.remove('completada');
+                label.style.background = '';
+                label.style.opacity = '';
+            }
+        } else {
+            // Revertir checkbox si hay error
+            checkbox.checked = !checkbox.checked;
+            alert('Error: ' + (data.error || 'No se pudo actualizar la tarea'));
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        checkbox.checked = !checkbox.checked;
+        alert('Ocurrió un error al actualizar la tarea');
+    });
+}
+
+// Función para obtener el token CSRF
+function getCookie(name) {
+    let cookieValue = null;
+    if (document.cookie && document.cookie !== '') {
+        const cookies = document.cookie.split(';');
+        for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                break;
+            }
+        }
+    }
+    return cookieValue;
+}
+
+// Registrar actividad de video cuando se carga la página
+document.addEventListener('DOMContentLoaded', function() {
+    // Registrar que el usuario vio el video (solo una vez por sección)
+    setTimeout(function() {
+        fetch('/domingo/1/actividad/video/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken')
+            }
+        })
+        .catch(error => console.log('Video activity logged'));
+    }, 500);
+});
+</script>
+
+{% endblock %}
+{% endblock content %}

@@ -1,0 +1,218 @@
+/* Botón de volver estilo dinámico */
+.karaoke-back-btn {
+    position: absolute;
+    top: 18px;
+    left: 18px;
+    z-index: 20;
+    background: linear-gradient(135deg, #00bcd4 60%, #0288d1 100%);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3em;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 8px #00bcd433;
+    transition: background 0.18s, color 0.18s, transform 0.18s;
+}
+.karaoke-back-btn:hover {
+    background: #0288d1;
+    color: #fffde7;
+    transform: scale(1.12) rotate(-4deg);
+}
+@media (max-width: 600px) {
+    .karaoke-back-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 0.95em;
+        top: 6px;
+        left: 6px;
+    }
+}
+/* =========================
+   MEMORY GAME STYLES
+========================= */
+.memory-section {
+    background: rgba(255,255,255,0.07);
+    border-radius: 18px;
+    box-shadow: 0 4px 32px #0003;
+    margin: 2em auto;
+    padding: 2em 1.5em 2em 1.5em;
+    max-width: 420px;
+    width: 100%;
+    min-height: 520px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.memory-section h1 {
+    color: #c328f1;
+    font-size: 2em;
+    margin-bottom: 0.7em;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 12px #0008;
+}
+
+.stats {
+    background: #fffbe6;
+    color: #1b2f7a;
+    border-radius: 1em;
+    padding: 0.5em 1.2em;
+    margin-bottom: 1.2em;
+    font-weight: bold;
+    box-shadow: 0 2px 8px #ffd54f44;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    margin-bottom: 1.5em;
+    width: 100%;
+    max-width: 360px;
+}
+
+.card {
+    aspect-ratio: 1;
+    background: linear-gradient(135deg, #ffd54f 60%, #fffbe6 100%);
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    cursor: pointer;
+    position: relative;
+    box-shadow: 0 2px 8px #0002;
+    transition: transform 0.3s, background 0.3s, color 0.3s;
+    color: #1b2f7a;
+    border: 2px solid #ffe066;
+}
+
+.card.flipped {
+    background: #fffbe6;
+    color: #1b2f7a;
+    transform: rotateY(180deg) scale(1.05);
+    border-color: #ffd54f;
+}
+
+.card.matched {
+    background: #4caf50;
+    color: #fff;
+    border-color: #4caf50;
+    animation: pop 0.4s;
+}
+
+@keyframes pop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.18); }
+    100% { transform: scale(1); }
+}
+
+.message {
+    margin-top: 1.2em;
+    font-size: 1.3em;
+    color: #9215b1;
+    opacity: 0;
+    transition: opacity 1.5s;
+    text-shadow: 0 2px 12px #ffd54f88;
+}
+
+.message.show {
+    opacity: 1;
+    animation: glowText 2s infinite alternate;
+}
+
+@keyframes glowText {
+    from { text-shadow: 0 0 5px gold; }
+    to { text-shadow: 0 0 20px gold; }
+}
+
+.btn {
+    margin-top: 1.5em;
+    padding: 12px 28px;
+    border-radius: 30px;
+    border: none;
+    background: #ffd54f;
+    color: #1b2f7a;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 8px #ffd54f44;
+    transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+#restartBtn:hover {
+    background: #fffbe6;
+    color: #0077cc;
+    transform: scale(1.07);
+}
+
+@media (max-width: 480px) {
+    .memory-section {
+        max-width: 100vw;
+        padding: 0.5em 0.1em 2.5em 0.1em;
+        min-height: 480px;
+        border-radius: 0;
+        box-shadow: none;
+    }
+    #restartBtn {
+        margin-bottom: 1.5em;
+        padding: 10px 16px;
+        border-radius: 22px;
+        font-size: 1em;
+        margin-top: 1em;
+    }
+    .message {
+        font-size: 1em;
+        margin-top: 0.7em;
+    }
+}
+
+@media (max-width: 900px) {
+    .memory-section {
+        max-width: 98vw;
+        padding: 1.2em 0.5em;
+        min-height: 350px;
+    }
+    .game-board {
+        max-width: 98vw;
+        gap: 10px;
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .card {
+        font-size: 2.8rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .memory-section {
+        max-width: 100vw;
+        padding: 0.5em 0.1em;
+        min-height: 250px;
+    }
+    .game-board {
+        max-width: 100vw;
+        gap: 6px;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .card {
+        font-size: 2.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        font-size: 2rem;
+    }
+}
+
+
+
+
+
+
+

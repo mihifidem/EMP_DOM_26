@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>I Domingo de Adviento · Esperanza</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="/static/css/domingo1.css">
+</head>
+<body>
+<div class="reto-icon" title="Reto de la semana">⭐</div>
+<div id="retoPopup" class="reto-popup">
+    <button class="close-btn" id="closeRetoPopup" aria-label="Cerrar">×</button>
+    <section class="reto-semana">
+        <h3>📦 6️⃣ RETO DE 7 DÍAS – LA SEMANA DE LA LUZ</h3>
+        <div class="reto-list" id="retoList">
+            <label><input type="checkbox" class="reto-chk"> Día 1 – Sonreír primero <span class="star">☆</span></label><br>
+            <label><input type="checkbox" class="reto-chk"> Día 2 – Decir gracias <span class="star">☆</span></label><br>
+            <label><input type="checkbox" class="reto-chk"> Día 3 – Esperar sin enfadarme <span class="star">☆</span></label><br>
+            <label><input type="checkbox" class="reto-chk"> Día 4 – Ayudar en casa <span class="star">☆</span></label><br>
+            <label><input type="checkbox" class="reto-chk"> Día 5 – Escuchar con atención <span class="star">☆</span></label><br>
+            <label><input type="checkbox" class="reto-chk"> Día 6 – Rezar 1 minuto <span class="star">☆</span></label><br>
+            <label><input type="checkbox" class="reto-chk"> Día 7 – Encender una vela <span class="star">☆</span></label>
+        </div>
+        <div id="reto-completado" style="display:none;margin-top:1em;font-size:1.3em;color:#ffe066;text-shadow:0 2px 12px #ffe06688;">🏆 ¡Tu corazón brilla fuerte!</div>
+    </section>
+</div>
+
+<section class="hero" id="hero">
+<div class="final-message" id="finalMessage">
+    ✨ La esperanza ha comenzado
+</div>
+
+    <div class="stars"></div>
+
+    <div class="particles">
+        <span></span><span></span><span></span>
+        <span></span><span></span><span></span>
+        <span></span><span></span><span></span>
+    </div>
+
+    <div class="hero-content">
+
+        <div class="candle" id="candle">
+            <span class="glow"></span>
+            <span class="flames"></span>
+            <span class="thread"></span>
+        </div>
+
+        <h1>I Domingo de Adviento</h1>
+        <h2>🌟 ESPERANZA</h2>
+        <p>Encendemos la primera luz</p>
+
+        <button id="lightBtn">🕯️ Encender mi luz</button>
+
+    </div>
+
+</section>
+
+<!-- Música -->
+<audio id="music" loop>
+    <source src="c01.mp3" type="audio/mpeg">
+</audio>
+<button id="toggleMusicBtn" class="music-btn" title="Pausar/Reanudar música">⏸️ Pausar música</button>
+
+<!-- Campanita -->
+<audio id="bell">
+    <source src="https://cdn.pixabay.com/download/audio/2021/08/04/audio_7b78bafc33.mp3?filename=magic-bell-6094.mp3" type="audio/mpeg">
+</audio>
+
+<script src="/static/js/domingo1.js"></script>
+
+<nav class="bottom-menu">
+    <a href="#" title="Inicio"><span>🏠</span><span class="label">Inicio</span></a>
+    <a href="index_juego.html" title="Juego"><span>🎲</span><span class="label">Juego</span></a>
+    <a href="index_cancion.html" title="Canción"><span>🎵</span><span class="label">Canciones</span></a>
+    <a href="index_karaoke.html" title="Karaoke"><span>🎵</span><span class="label">Karaoke</span></a>
+    <a href="microhistoria.html" title="Microhistoria"><span>📖</span><span class="label">Microhistoria</span></a>
+    <a href="#" title="Ritual"><span>🕯️</span><span class="label">Ritual</span></a>
+
+
+
+</body>
+</html>
+
+
+
+

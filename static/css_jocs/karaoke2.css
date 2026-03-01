@@ -1,0 +1,159 @@
+.karaoke-lyrics .active {
+	background: #a3b2bb;
+	color: #377be2;
+	border-radius: 0.5em;
+	padding: 0.1em 0.5em;
+	font-size: 1.18em;
+	font-weight: bold;
+	transition: background 0.2s, color 0.2s;
+}
+/* Eliminar highlight gris en la barra del navbar al hacer click/tap */
+.navbar, .karaoke-navbar, nav, .dt-sc-main-menu, .main-nav, .navbar-bar {
+	-webkit-tap-highlight-color: transparent;
+	user-select: none;
+}
+/* --- ESTILOS KARAOKE BASADOS EN MEMORY.CSS --- */
+.karaoke-back-btn {
+	position: absolute;
+	top: 18px;
+	left: 18px;
+	z-index: 20;
+	background: linear-gradient(135deg, #00bcd4 60%, #0288d1 100%);
+	color: #fff;
+	border: none;
+	border-radius: 50%;
+	width: 44px;
+	height: 44px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.3em;
+	font-weight: bold;
+	cursor: pointer;
+	box-shadow: 0 2px 8px #00bcd433;
+	transition: background 0.18s, color 0.18s, transform 0.18s;
+}
+
+
+.karaoke-sidebar .active {
+	background: #a3b2bb;
+	color: #377be2;
+	transform: scale(1.1) ;
+}
+
+@media (max-width: 600px) {
+	.karaoke-back-btn {
+		width: 32px;
+		height: 32px;
+		font-size: 0.95em;
+		top: 6px;
+		left: 6px;
+	}
+}
+
+.karaoke-container {
+	background: rgba(255,255,255,0.07);
+	border-radius: 18px;
+	box-shadow: 0 4px 32px #0003;
+	margin: 2em auto;
+	padding: 2em 1.5em 2em 1.5em;
+	max-width: 800px;
+	width: 100%;
+	min-height: 520px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
+}
+
+.karaoke-title {
+	color: #c328f1;
+	font-size: 2em;
+	margin-bottom: 0.7em;
+	letter-spacing: 1px;
+	text-shadow: 0 2px 12px #0008;
+}
+
+.karaoke-lyrics {
+	background: #fffbe6;
+	color: #d4b60c;
+	border-radius: 1em;
+	padding: 0.5em 1.2em;
+	margin-bottom: 1.2em;
+	font-weight: bold;
+	box-shadow: 0 2px 8px #ffd54f44;
+	min-height: 3em;
+	width: 100%;
+	text-align: center;
+	font-size: 1.2em;
+}
+
+.karaoke-controls {
+	margin-top: 1.5em;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	gap: 2em;
+	max-width: 100%;
+	flex-wrap: wrap;
+	box-sizing: border-box;
+}
+
+.karaoke-controls button, #restartBtn {
+	background: #ffd54f;
+	color: #1b2f7a;
+	border: none;
+	border-radius: 30px;
+	padding: 12px 28px;
+	font-size: 1.1em;
+	font-weight: bold;
+	cursor: pointer;
+	box-shadow: 0 2px 8px #ffd54f44;
+	transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+.karaoke-controls button:hover, #restartBtn:hover {
+	background: #fffbe6;
+	color: #0077cc;
+	transform: scale(1.07);
+}
+
+.karaoke-lyrics.message {
+	margin-top: 1.2em;
+	font-size: 1.3em;
+	color: #9215b1;
+	opacity: 0;
+	transition: opacity 1.5s;
+	text-shadow: 0 2px 12px #ffd54f88;
+}
+.karaoke-lyrics.message.show {
+	opacity: 1;
+	animation: glowText 2s infinite alternate;
+}
+@keyframes glowText {
+	from { text-shadow: 0 0 5px gold; }
+	to { text-shadow: 0 0 20px gold; }
+}
+
+@media (max-width: 600px) {
+	.karaoke-container {
+		max-width: 100vw;
+		padding: 0.5em 0.1em 2.5em 0.1em;
+		min-height: 480px;
+		border-radius: 0;
+		box-shadow: none;
+	}
+	.karaoke-controls {
+		gap: 0.7em;
+	}
+	.karaoke-controls button, #restartBtn {
+		margin-bottom: 1em;
+		padding: 10px 16px;
+		border-radius: 22px;
+		font-size: 1em;
+		margin-top: 1em;
+	}
+	.karaoke-lyrics.message {
+		font-size: 1em;
+		margin-top: 0.7em;
+	}
+}

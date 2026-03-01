@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karaoke – Algo empieza hoy</title>
+
+<style>
+body {
+    font-family: system-ui, sans-serif;
+    background: radial-gradient(circle at center, #1b2f7a, #0a1a3f);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+}
+
+.container {
+    max-width: 90%;
+}
+
+.subtitle {
+    font-size: 1.6rem;
+    line-height: 1.6;
+    min-height: 120px;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.fade {
+    opacity: 0;
+    transform: translateY(10px);
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>🎵 Canciones disponibles</h2>
+    <ul id="mp3List" style="list-style:none;padding:0;margin:1em 0 2em 0;"></ul>
+    <audio id="audio" controls style="width:100%;margin-top:1em;"></audio>
+</div>
+
+<script>
+// Lista de archivos mp3 detectados en el directorio
+const mp3Files = [
+    "c01.mp3",
+    "Esperanza.mp3",
+    "Hoy comienza un tiempo nuevo_.mp3",
+    "_Algo empieza hoy_.mp3"
+];
+
+const audio = document.getElementById("audio");
+const mp3List = document.getElementById("mp3List");
+
+mp3Files.forEach(file => {
+    const li = document.createElement("li");
+    li.style.marginBottom = "0.7em";
+    const btn = document.createElement("button");
+    btn.textContent = `▶️ ${file.replace(/\.mp3$/,'')}`;
+    btn.style.padding = "0.5em 1.2em";
+    btn.style.borderRadius = "2em";
+    btn.style.border = "none";
+    btn.style.background = "#ffe066";
+    btn.style.color = "#222";
+    btn.style.fontWeight = "bold";
+    btn.style.cursor = "pointer";
+    btn.style.fontSize = "1em";
+    btn.onmouseover = () => btn.style.background = '#fffbe6';
+    btn.onmouseout = () => btn.style.background = '#ffe066';
+    btn.onclick = () => {
+        audio.src = file;
+        audio.play();
+    };
+    li.appendChild(btn);
+    mp3List.appendChild(li);
+});
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container" style="max-width: 600px; margin: 50px auto; padding: 20px;">
+    <div style="text-align: center; margin-bottom: 30px;">
+        <h1 style="font-size: 2em; margin-bottom: 10px;">👶 ¿Quién va a jugar?</h1>
+        <p style="color: #666;">Selecciona el niño que accederá</p>
+    </div>
+
+    {% if messages %}
+        {% for message in messages %}
+        <div style="padding: 12px; margin-bottom: 20px; border-radius: 6px; background: {% if message.tags == 'warning' %}#fff3cd{% else %}#d1ecf1{% endif %}; color: {% if message.tags == 'warning' %}#856404{% else %}#0c5460{% endif %};">
+            {{ message }}
+        </div>
+        {% endfor %}
+    {% endif %}
+
+    <form method="post" style="display: grid; gap: 15px;">
+        {% csrf_token %}
+        {% for nino in ninos %}
+        <label style="display: block; padding: 20px; background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%); border-radius: 10px; border: 2px solid transparent; cursor: pointer; transition: all 0.3s; position: relative;">
+            <input type="radio" name="nino_id" value="{{ nino.id }}" required style="position: absolute; opacity: 0;">
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.8em;">
+                    {% if nino.genero == 'M' %}👦{% elif nino.genero == 'F' %}👧{% else %}👤{% endif %}
+                </div>
+                <div style="flex: 1;">
+                    <div style="font-weight: bold; font-size: 1.2em; color: #333;">{{ nino.nombre }}</div>
+                    <div style="color: #666; font-size: 0.9em;">
+                        {% if nino.genero %}{{ nino.get_genero_display }}{% endif %}
+                        {% if nino.fecha_nacimiento %}
+                            {% if nino.genero %} • {% endif %}
+                            {{ nino.fecha_nacimiento|date:"d/m/Y" }}
+                        {% endif %}
+                    </div>
+                </div>
+                <div style="width: 30px; height: 30px; border: 2px solid #667eea; border-radius: 50%; display: flex; align-items: center; justify-content: center;">
+                    <div class="radio-check" style="width: 16px; height: 16px; background: #667eea; border-radius: 50%; transform: scale(0); transition: transform 0.2s;"></div>
+                </div>
+            </div>
+        </label>
+        {% endfor %}
+
+        <button type="submit" class="login-btn" style="margin-top: 10px; font-size: 1.1em; padding: 15px;">
+            Continuar ✨
+        </button>
+    </form>
+
+    <style>
+        input[type="radio"]:checked + div {
+            background: linear-gradient(135deg, #667eea30 0%, #764ba230 100%);
+            border-color: #667eea;
+        }
+        input[type="radio"]:checked ~ div .radio-check {
+            transform: scale(1);
+        }
+        label:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+        }
+    </style>
+</div>
+{% endblock %}

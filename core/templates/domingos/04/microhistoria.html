@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<style>
+{% if nino_nombre %}
+.nino-badge {
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    z-index: 9998;
+    background: linear-gradient(135deg, #48c6ef 0%, #6f86d6 100%);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+{% endif %}
+
+  .btn-volver-micro {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 30px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+
+  .btn-volver-micro:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+  }
+</style>
+
+
+
+
+
+
+
+´{% block content %}
+<link rel="stylesheet" href="{% static 'styles.css' %}">
+
+{% if nino_nombre %}
+<div onclick="window.location.href='{% url 'select-nino' %}?next={{ request.path }}'" style="position: fixed; top: 70px; right: 20px; z-index: 9998; background: linear-gradient(135deg, #48c6ef 0%, #6f86d6 100%); color: white; padding: 10px 20px; border-radius: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); font-weight: bold; display: flex; align-items: center; gap: 8px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 6px 16px rgba(0,0,0,0.4)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.3)';">
+    <span style="font-size: 1.2em;">👶</span>
+    <span>{{ nino_nombre }}</span>
+    <span style="margin-left: 8px; background: rgba(255,255,255,0.3); padding: 4px 12px; border-radius: 12px; font-size: 0.9em; display: flex; align-items: center; gap: 4px;">
+        ⭐ {{ puntos_totales }}
+    </span>
+</div>
+
+
+<div id="main">
+    {% include 'partials/breadcrumb.html' with breadcrumb_title=breadcrumb_title breadcrumb_items=breadcrumb_items %}
+</div>                                                                                          
+{% endif %}
+
+<div class="microhistoria-container">
+  <div class="microhistoria-title">MICROHISTORIA EXCLUSIVA</div>
+  <h2>“El “sí” que cambió todo" </h2>
+  <div class="microhistoria-text">
+
+
+
+La última vela estaba encendida.<br><br>
+
+Clara la miraba en silencio.<br><br>
+
+—¿Por qué esta semana hablamos del amor? —preguntó.<br><br>
+
+Su madre respondió suavemente:<br><br>
+
+—Porque estamos muy cerca de la Navidad. Y todo empezó con un “sí” lleno de amor.<br><br>
+
+Clara pensó en María. No lo entendía todo. No sabía cómo sería el futuro. Pero confió.<br><br>
+
+Esa tarde, Clara tuvo su pequeño momento difícil. Su hermano había roto su dibujo favorito. Sintió ganas de enfadarse. Pero respiró hondo.<br><br>
+
+Recordó el “sí” de María.<br><br>
+
+Se acercó a su hermano y le dijo:<br><br>
+
+—Lo hacemos juntos otra vez.<br><br>
+
+Mientras dibujaban, Clara comprendió algo importante:<br><br>
+
+El amor no siempre es algo grande y brillante.<br>
+A veces es un pequeño “sí” que hace el mundo más cálido. ❤️<br><br>
+  </div>
+  <div class="microhistoria-final">✨ El amor verdadero comienza cuando elegimos decir “sí” incluso en lo pequeño. ❤️</div>
+  <button class="audio-btn" onclick="document.getElementById('audio').play()">🔊 Escuchar narración</button>
+    <!-- Botón para volver -->
+  <a style="text-decoration: none;" class="audio-btn" href="{% url 'domingo4' %}" class="btn-volver-micro">← volver</a>
+  <audio id="audio" src="{% static '/musica/04/DOM04_MH01.mp3' %}"></audio>
+  <img style="margin-top: 1em;" src="{% static 'images/domingos/04/DOM04_MHi01.png' %}" alt="">
+  
+
+</div>
+    {% include 'partials/quick-menu.html' %}
+
+{% endblock %}

@@ -1,0 +1,589 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<!--main starts-->
+<style>
+    .carousel-img-small {
+        max-height: 700px;
+        object-fit: cover;
+    }
+</style>
+<div id="main">
+
+    <!-- HERO SLIDER NUEVO -->
+<div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+    <img src="{% static 'images/hero/101.png' %}" class="d-block w-100 carousel-img-small" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>First slide label</h5>
+        <p>Some representative placeholder content for the first slide.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+    <img src="{% static 'images/hero/102.png' %}" class="d-block w-100 carousel-img-small" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Second slide label</h5>
+        <p>Some representative placeholder content for the second slide.</p>
+      </div>
+    </div>
+    <div class="carousel-item">
+    <img src="{% static 'images/hero/103.png' %}" class="d-block w-100 carousel-img-small" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Third slide label</h5>
+        <p>Some representative placeholder content for the third slide.</p>
+      </div>
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+    <!--slider ends-->
+    <!--primary starts-->
+    <section id="primary" class="content-full-width">
+        <!--container starts-->
+        <div class="container">
+
+            <div class="dt-sc-one-fourth column first">
+                <div class="dt-sc-ico-content type1">
+                    <div class="icon">
+                        <span class="icon-outer">
+                            <img src="http://via.placeholder.com/128x128" alt="" title="">
+                            <span class="infolayer">
+                                <a href="#"><i class="fa fa-link"></i></a>
+                            </span>
+                        </span>
+                    </div>
+                    <h4><a href="">Active Learning</a></h4>
+                    <p>Curabitur ultrices posuere mattis. Nam ullamcorper, diam sit amet euismod pelleo ntesque, eros
+                        risus rhoncus libero, invest tibulum nisl ligula</p>
+                </div>
+            </div>
+
+            <div class="dt-sc-one-fourth column">
+                <div class="dt-sc-ico-content type1">
+                    <div class="icon">
+                        <span class="icon-outer">
+                            <img src="http://via.placeholder.com/128x128" alt="" title="">
+                            <span class="infolayer">
+                                <a href="#"><i class="fa fa-link"></i></a>
+                            </span>
+                        </span>
+                    </div>
+                    <h4><a href="">Music Class</a></h4>
+                    <p>Decor ostdcaer urabitur ultrices posuere mattis. Nam ullamcorper, diam sit amet euismod
+                        pelleontesque, eros risus rhoncus libero, invest tibulum nisl ligula</p>
+                </div>
+            </div>
+
+            <div class="dt-sc-one-fourth column">
+                <div class="dt-sc-ico-content type1">
+                    <div class="icon">
+                        <span class="icon-outer">
+                            <img src="http://via.placeholder.com/128x128" alt="" title="">
+                            <span class="infolayer">
+                                <a href="#"><i class="fa fa-link"></i></a>
+                            </span>
+                        </span>
+                    </div>
+                    <h4><a href="">Yoga Class</a></h4>
+                    <p>Rabitur ultrices posuere mattis. Nam ullamcorper, diam sit euismod pelleo ntesque, eros risus
+                        rhoncus libero, invest tibulum nisl gedretu osterftra ligula</p>
+                </div>
+            </div>
+
+            <div class="dt-sc-one-fourth column">
+                <div class="dt-sc-ico-content type1">
+                    <div class="icon">
+                        <span class="icon-outer">
+                            <img src="http://via.placeholder.com/128x128" alt="" title="">
+                            <span class="infolayer">
+                                <a href="#"><i class="fa fa-link"></i></a>
+                            </span>
+                        </span>
+                    </div>
+                    <h4><a href="">Kung fu Class</a></h4>
+                    <p>Curabitur ultrices posuere mattis. Nam ullamcorper, diam sit amet euismod pelleo ntesque, eros
+                        risus rhoncus libero, invest tibulum nisl ligula</p>
+                </div>
+            </div>
+
+        </div>
+        <!--container ends-->
+        <div class="dt-sc-hr"></div>
+        <!--fullwidth-background starts-->
+        <section class="fullwidth-background dt-sc-parallax-section turquoise-bg">
+            <!--container starts-->
+            <div class="container">
+                <!--dt-sc-one-half starts-->
+                <div class="dt-sc-one-half column first">
+                    <h2>¿Por qué colorear mandalas?</h2>
+                    <!--dt-sc-one-half starts-->
+                    <div class="dt-sc-one-half column first">
+
+                        <div class="dt-sc-ico-content type2">
+                            <div class="icon">
+                                <span class="fa fa-glass"> </span>
+                            </div>
+                            <h4><a href="#" target="_blank"> Centro espiritual claro </a></h4>
+                            <p>El mandala religioso siempre tiene un centro simbólico (cruz, luz, corazón, Jesús,
+                                símbolo bíblico). Ese centro representa a Dios como eje de la vida. </p>
+                        </div>
+                        <div class="dt-sc-hr-very-small"></div>
+                        <div class="dt-sc-ico-content type2">
+                            <div class="icon">
+                                <span class="fa fa-pencil"> </span>
+                            </div>
+                            <h4><a href="#" target="_blank"> Simetría y armonía </a></h4>
+                            <p>La estructura circular y simétrica transmite equilibrio. En clave espiritual, recuerda
+                                que Dios pone orden donde hay caos y que la vida cristiana busca armonía entre
+                                pensamiento, corazón y acción.</p>
+                        </div>
+                        <div class="dt-sc-hr-very-small"></div>
+                        <div class="dt-sc-ico-content type2">
+                            <div class="icon">
+                                <span class="fa fa-bullseye"> </span>
+                            </div>
+                            <h4><a href="#" target="_blank"> Simbolismo profundo </a></h4>
+                            <p>Los mandalas religiosos incorporan símbolos (pez, paloma, luz, pan, vid, camino…). Cada
+                                elemento tiene significado bíblico. No es solo decoración: es catequesis visual.</p>
+                        </div>
+
+                    </div>
+                    <!--dt-sc-one-half ends-->
+
+                    <!--dt-sc-one-half starts-->
+                    <div class="dt-sc-one-half column">
+
+                        <div class="dt-sc-ico-content type2">
+                            <div class="icon">
+                                <span class="fa fa-tachometer"> </span>
+                            </div>
+                            <h4><a href="#" target="_blank"> Proceso contemplativo </a></h4>
+                            <p>Colorear un mandala invita a bajar el ritmo. No es actividad rápida, sino experiencia de
+                                silencio. Favorece la oración sencilla y la escucha interior.<br></p>
+                        </div>
+                        <div class="dt-sc-hr-very-small"></div>
+                        <div class="dt-sc-ico-content type2">
+                            <div class="icon">
+                                <span class="fa fa-magic"> </span>
+                            </div>
+                            <h4><a href="#" target="_blank"> Forma circular (eternidad) </a></h4>
+                            <p>El círculo no tiene principio ni fin.<br> En la tradición cristiana puede evocar
+                                eternidad, plenitud y promesa. Recuerda que la historia no termina en el problema, sino
+                                en la Vida.</p>
+                        </div>
+                        <div class="dt-sc-hr-very-small"></div>
+                        <div class="dt-sc-ico-content type2">
+                            <div class="icon">
+                                <span class="fa fa-music"> </span>
+                            </div>
+                            <h4><a href="#" target="_blank"> Participación activa </a></h4>
+                            <p>El mandala no se mira: se completa. Esto convierte al niño o adulto en participante del
+                                mensaje. La fe no es solo teoría, es implicación personal.</p>
+                        </div>
+
+                    </div>
+                    <!--dt-sc-one-half ends-->
+                </div>
+                <!--dt-sc-one-half ends-->
+
+                <!--dt-sc-one-half starts-->
+                <div class="dt-sc-one-half column">
+                    <h2>With Music4Kids, music is child's play!</h2>
+                    <div class="add-slider-wrapper">
+                        <ul class="add-slider">
+                            <li> <img src="http://via.placeholder.com/464x345" alt="" title=""> </li>
+                            <li> <img src="http://via.placeholder.com/464x345" alt="" title=""> </li>
+                            <li> <img src="http://via.placeholder.com/464x345" alt="" title=""> </li>
+                        </ul>
+                    </div>
+                </div>
+                <!--dt-sc-one-half ends-->
+            </div>
+            <!--container ends-->
+        </section>
+        <!--fullwidth-background ends-->
+        <div class="dt-sc-hr"></div>
+        <!--container starts-->
+        <div class="container">
+            <h2 class="dt-sc-hr-green-title">Our Portfolio</h2>
+
+            <!--portfolio-content starts-->
+            <div class="front-portfolio-container">
+                <div class="portfolio-content portfolio-content1">
+                    <div class="front-portfolio">
+                        <div class="portfolio-outer">
+                            <div class="portfolio-thumb">
+                                <img src="http://via.placeholder.com/1170x1016" alt="" title="">
+                                <div class="image-overlay">
+                                    <h5><a href="portfolio-detail.html">Gifts at Large</a></h5>
+                                    <a href="portfolio-detail.html" class="link"><span class="fa fa-link"></span></a>
+                                    <a href="http://via.placeholder.com/1170x1016" data-gal="prettyPhoto[gallery]"
+                                        class="zoom"><span class="fa fa-search"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-content portfolio-content2">
+                    <div class="front-portfolio">
+                        <div class="portfolio-outer">
+                            <div class="portfolio-thumb">
+                                <img src="http://via.placeholder.com/1170x1016" alt="" title="">
+                                <div class="image-overlay">
+                                    <h5><a href="portfolio-detail.html">Gifts at Large</a></h5>
+                                    <a href="portfolio-detail.html" class="link"><span class="fa fa-link"></span></a>
+                                    <a href="http://via.placeholder.com/1170x1016" data-gal="prettyPhoto[gallery]"
+                                        class="zoom"><span class="fa fa-search"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-content portfolio-content3">
+                    <div class="front-portfolio">
+                        <div class="portfolio-outer">
+                            <div class="portfolio-thumb">
+                                <img src="http://via.placeholder.com/1170x1016" alt="" title="">
+                                <div class="image-overlay">
+                                    <h5><a href="portfolio-detail.html">Gifts at Large</a></h5>
+                                    <a href="portfolio-detail.html" class="link"><span class="fa fa-link"></span></a>
+                                    <a href="http://via.placeholder.com/1170x1016" data-gal="prettyPhoto[gallery]"
+                                        class="zoom"><span class="fa fa-search"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-content portfolio-content4">
+                    <div class="front-portfolio">
+                        <div class="portfolio-outer">
+                            <div class="portfolio-thumb">
+                                <img src="http://via.placeholder.com/1170x1016" alt="" title="">
+                                <div class="image-overlay">
+                                    <h5><a href="portfolio-detail.html">Gifts at Large</a></h5>
+                                    <a href="portfolio-detail.html" class="link"><span class="fa fa-link"></span></a>
+                                    <a href="http://via.placeholder.com/1170x1016" data-gal="prettyPhoto[gallery]"
+                                        class="zoom"><span class="fa fa-search"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-content portfolio-content5">
+                    <div class="front-portfolio">
+                        <div class="portfolio-outer">
+                            <div class="portfolio-thumb">
+                                <img src="http://via.placeholder.com/1170x1016" alt="" title="">
+                                <div class="image-overlay">
+                                    <h5><a href="portfolio-detail.html">Gifts at Large</a></h5>
+                                    <a href="portfolio-detail.html" class="link"><span class="fa fa-link"></span></a>
+                                    <a href="http://via.placeholder.com/1170x1016" data-gal="prettyPhoto[gallery]"
+                                        class="zoom"><span class="fa fa-search"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-content portfolio-content6">
+                    <div class="front-portfolio">
+                        <div class="portfolio-outer">
+                            <div class="portfolio-thumb">
+                                <img src="http://via.placeholder.com/1170x1016" alt="" title="">
+                                <div class="image-overlay">
+                                    <h5><a href="portfolio-detail.html">Gifts at Large</a></h5>
+                                    <a href="portfolio-detail.html" class="link"><span class="fa fa-link"></span></a>
+                                    <a href="http://via.placeholder.com/1170x1016" data-gal="prettyPhoto[gallery]"
+                                        class="zoom"><span class="fa fa-search"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="portfolio-content portfolio-content7">
+                    <div class="front-portfolio">
+                        <div class="portfolio-outer">
+                            <div class="portfolio-thumb">
+                                <img src="http://via.placeholder.com/1170x1016" alt="" title="">
+                                <div class="image-overlay">
+                                    <h5><a href="portfolio-detail.html">Gifts at Large</a></h5>
+                                    <a href="portfolio-detail.html" class="link"><span class="fa fa-link"></span></a>
+                                    <a href="http://via.placeholder.com/1170x1016" data-gal="prettyPhoto[gallery]"
+                                        class="zoom"><span class="fa fa-search"></span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dt-sc-hr-small"></div>
+                <div class="aligncenter">
+                    <a href="#" class="dt-sc-button medium mustard"> Hit here to view all <span
+                            class="fa fa-chevron-circle-right"> </span></a>
+                </div>
+            </div>
+
+            <!--front-portfolio-container ends-->
+
+        </div>
+        <!--container ends-->
+
+        <div class="dt-sc-hr"></div>
+        <!--fullwidth-background starts-->
+        <section class="fullwidth-background dt-sc-parallax-section orange-bg">
+            <!--container starts-->
+            <div class="container">
+                <h2 class="dt-sc-hr-white-title">Recent Blog</h2>
+                <div class="column dt-sc-one-half first">
+                    <article class="blog-entry">
+                        <div class="blog-entry-inner">
+                            <div class="entry-meta">
+                                <a href="blog-detail.html" class="blog-author"><img
+                                        src="http://via.placeholder.com/90x90" alt="" title=""></a>
+                                <div class="date">
+                                    <span> 27 </span>
+                                    <p> Aug <br> 2014 </p>
+                                </div>
+                                <a href="#" class="comments">
+                                    12 <span class="fa fa-comment"> </span>
+                                </a>
+                                <a href="#" class="entry_format"><span class="fa fa-picture-o"></span></a>
+                            </div>
+                            <div class="entry-thumb">
+                                <a href="blog-detail.html"><img src="http://via.placeholder.com/1170x711" alt=""
+                                        title=""></a>
+                            </div>
+                            <div class="entry-details">
+                                <div class="entry-title">
+                                    <h3><a href="blog-detail.html"> Activities Improves Mind </a></h3>
+                                </div>
+                                <!--entry-metadata ends-->
+                                <div class="entry-body">
+                                    <p>Roin bibendum nibhsds. Nuncsdsd fermdada msit ametadasd consequat. Praes porr
+                                        nulla sit amet dui lobortis, id venenatis nibh accums.</p>
+                                </div>
+                                <a href="blog-detail.html" class="dt-sc-button small"> Read More <span
+                                        class="fa fa-chevron-circle-right"> </span></a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <!--dt-sc-one-half ends-->
+                <div class="column dt-sc-one-half">
+                    <article class="blog-entry">
+                        <div class="blog-entry-inner">
+                            <div class="entry-meta">
+                                <a href="blog-detail.html" class="blog-author"><img
+                                        src="http://via.placeholder.com/90x90" alt="" title=""></a>
+                                <div class="date">
+                                    <span> 27 </span>
+                                    <p> Aug <br> 2014 </p>
+                                </div>
+                                <a href="#" class="comments">
+                                    12 <span class="fa fa-comment"> </span>
+                                </a>
+                                <a href="#" class="entry_format"><span class="fa fa-picture-o"></span></a>
+                            </div>
+                            <div class="entry-thumb">
+                                <a href="blog-detail.html"><img src="http://via.placeholder.com/1170x711" alt=""
+                                        title=""></a>
+                            </div>
+                            <div class="entry-details">
+                                <div class="entry-title">
+                                    <h3><a href="blog-detail.html"> Weekly Reader Zone </a></h3>
+                                </div>
+                                <!--entry-metadata ends-->
+                                <div class="entry-body">
+                                    <p>Iid venenatis nibh accums. Doinbibe ndum nibhsds. Nuncsdsd fermdada msit
+                                        ametadasd consequat. Praes porr nulla sit amet dui lobortis, id venenatis nibh
+                                        accumsan...</p>
+                                </div>
+                                <a href="blog-detail.html" class="dt-sc-button small"> Read More <span
+                                        class="fa fa-chevron-circle-right"> </span></a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+                <!--dt-sc-one-half ends-->
+            </div>
+            <!--container ends-->
+        </section>
+        <!--fullwidth-background ends-->
+        <div class="dt-sc-hr"></div>
+        <!--container starts-->
+        <div class="container">
+            <h2 class="dt-sc-hr-green-title">Our Staffs</h2>
+
+            <div class="column dt-sc-one-fourth first">
+                <div class="dt-sc-team">
+                    <div class="image">
+                        <img class="item-mask" src="images/mask.png" alt="" title="">
+                        <img src="http://via.placeholder.com/381x331" alt="" title="">
+                        <div class="dt-sc-image-overlay">
+                            <a href="#" class="link"><span class="fa fa-link"></span></a>
+                            <a href="#" class="zoom"><span class="fa fa-search"></span></a>
+                        </div>
+                    </div>
+                    <div class="team-details">
+                        <h4> Jack Daniels </h4>
+                        <h6> Senior Supervisor </h6>
+                        <p> Phasellus lorem augue, vulputate vel orci id, ultricies aliquet risus. </p>
+                    </div>
+                </div>
+            </div>
+            <div class="column dt-sc-one-fourth">
+                <div class="dt-sc-team">
+                    <div class="image">
+                        <img class="item-mask" src="images/mask.png" alt="" title="">
+                        <img src="http://via.placeholder.com/381x331" alt="" title="">
+                        <div class="dt-sc-image-overlay">
+                            <a href="#" class="link"><span class="fa fa-link"></span></a>
+                            <a href="#" class="zoom"><span class="fa fa-search"></span></a>
+                        </div>
+                    </div>
+                    <div class="team-details">
+                        <h4> Linda Glendell </h4>
+                        <h6> Teaching Professor </h6>
+                        <p> Phasellus lorem augue, vulputate vel orci id, ultricies aliquet risus. </p>
+                    </div>
+                </div>
+            </div>
+            <div class="column dt-sc-one-fourth">
+                <div class="dt-sc-team">
+                    <div class="image">
+                        <img class="item-mask" src="images/mask.png" alt="" title="">
+                        <img src="http://via.placeholder.com/381x331" alt="" title="">
+                        <div class="dt-sc-image-overlay">
+                            <a href="#" class="link"><span class="fa fa-link"></span></a>
+                            <a href="#" class="zoom"><span class="fa fa-search"></span></a>
+                        </div>
+                    </div>
+                    <div class="team-details">
+                        <h4> Kate Dennings </h4>
+                        <h6> Children Diet </h6>
+                        <p> Phasellus lorem augue, vulputate vel orci id, ultricies aliquet risus. </p>
+                    </div>
+                </div>
+            </div>
+            <div class="column dt-sc-one-fourth">
+                <div class="dt-sc-team">
+                    <div class="image">
+                        <img class="item-mask" src="images/mask.png" alt="" title="">
+                        <img src="http://via.placeholder.com/381x331" alt="" title="">
+                        <div class="dt-sc-image-overlay">
+                            <a href="#" class="link"><span class="fa fa-link"></span></a>
+                            <a href="#" class="zoom"><span class="fa fa-search"></span></a>
+                        </div>
+                    </div>
+                    <div class="team-details">
+                        <h4> Kristof Slinghot </h4>
+                        <h6> Management </h6>
+                        <p> Phasellus lorem augue, vulputate vel orci id, ultricies aliquet risus. </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--container ends-->
+
+        <div class="dt-sc-hr"></div>
+        <!--fullwidth-background starts-->
+        <section class="fullwidth-background dt-sc-parallax-section product_bg">
+            <!--container starts-->
+            <div class="container">
+                <h2 class="dt-sc-hr-white-title">Recent Products</h2>
+                <ul class="products">
+                    <li class="dt-sc-one-fourth column first">
+                        <div class="product-thumb">
+                            <a href="#">
+                                <img src="http://via.placeholder.com/510x716" alt="" title="">
+                            </a>
+                            <span class="sale"> Sale! </span>
+                            <div class="image-overlay">
+                                <div class="product-button">
+                                    <a href="#" class="add-cart-btn"> Add to cart </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-details">
+                            <h5><a href="#"> Ellents Style Grade </a></h5>
+                            <span class="price"> $20.00 </span>
+                        </div>
+                    </li>
+                    <li class="dt-sc-one-fourth column">
+                        <div class="product-thumb">
+                            <a href="#">
+                                <img src="http://via.placeholder.com/510x716" alt="" title="">
+                            </a>
+                            <div class="image-overlay">
+                                <div class="product-button">
+                                    <a href="#" class="add-cart-btn"> Add to cart </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-details">
+                            <h5><a href="#"> Ellents Style Grade </a></h5>
+                            <span class="price"> $20.00 </span>
+                        </div>
+                    </li>
+                    <li class="dt-sc-one-fourth column">
+                        <div class="product-thumb">
+                            <a href="#">
+                                <img src="http://via.placeholder.com/510x716" alt="" title="">
+                            </a>
+                            <span class="sale"> Sale! </span>
+                            <div class="image-overlay">
+                                <div class="product-button">
+                                    <a href="#" class="add-cart-btn"> Add to cart </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-details">
+                            <h5><a href="#"> Ellents Style Grade </a></h5>
+                            <span class="price"> $20.00 </span>
+                        </div>
+                    </li>
+                    <li class="dt-sc-one-fourth column">
+                        <div class="product-thumb">
+                            <a href="#">
+                                <img src="http://via.placeholder.com/510x716" alt="" title="">
+                            </a>
+                            <div class="image-overlay">
+                                <div class="product-button">
+                                    <a href="#" class="add-cart-btn"> Add to cart </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="product-details">
+                            <h5><a href="#"> Ellents Style Grade </a></h5>
+                            <span class="price"> $20.00 </span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <!--container ends-->
+        </section>
+        <!--fullwidth-background ends-->
+    </section>
+    <!--primary ends-->
+</div>
+<!--main ends-->
+
+{% endblock %}

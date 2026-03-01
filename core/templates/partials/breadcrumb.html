@@ -1,0 +1,17 @@
+<!--breadcrumb-section starts-->
+<div class="breadcrumb-section violeta">
+    <div class="container blanco">
+        <h1 style="color: white !important;">{{ breadcrumb_title }}</h1>
+        <div class="breadcrumb">
+            {% for item in breadcrumb_items %}
+                {% if not forloop.first %}<span class="fa fa-angle-double-right blanco"></span>{% endif %}
+                {% if item.url %}
+                    <a class="blanco" href="{{ item.url }}">{{ item.label }}</a>
+                {% else %}
+                    <span class="current grisclaro">{{ item.label }}</span>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<!--breadcrumb-section ends-->

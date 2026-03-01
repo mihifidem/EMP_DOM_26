@@ -1,0 +1,124 @@
+/* Menú inferior con iconos */
+.bottom-menu {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    max-width: 100vw;
+    overflow-x: hidden;
+    background: rgba(255,255,255,0.95);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.5em 0 0.3em 0;
+    box-shadow: 0 -2px 12px rgba(0,0,0,0.08);
+    z-index: 1000;
+}
+.menu-button {
+    /* ...existing code... */
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 90vw;
+}
+@media (max-width: 600px) {
+    .bottom-menu {
+        padding-left: 0;
+        padding-right: 0;
+        width: 100vw;
+        max-width: 100vw;
+        overflow-x: hidden;
+    }
+    .bottom-menu a, .bottom-menu .menu-button {
+        min-width: 0;
+        font-size: 1em;
+        padding: 0 2vw;
+    }
+    .menu-options {
+        left: 50%;
+        transform: translateX(-50%);
+        width: 90vw;
+        max-width: 90vw;
+    }
+}
+.bottom-menu a {
+    color: #333;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.2em;
+    transition: color 0.2s;
+}
+.bottom-menu a:hover {
+    color: #0077cc;
+}
+.bottom-menu .label {
+    font-size: 0.85em;
+    margin-top: 0.1em;
+}
+
+/* Botón colapsable del menú inferior */
+.menu-button {
+    background: linear-gradient(135deg, #6a82fb 0%, #4c5cff 100%);
+    color: #fff;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    font-size: 2em;
+    border: none;
+    outline: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 16px 0 rgba(76,92,255,0.20), 0 1px 4px 0 rgba(0,0,0,0.10);
+    cursor: pointer;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 18px;
+    z-index: 1100;
+    transition: background 0.2s, transform 0.2s;
+}
+.menu-button.active {
+    background: linear-gradient(135deg, #7e0add 0%, #c788fa 100%);
+    transform: translateX(-50%) scale(1.15) rotate(-45deg);
+}
+
+/* Opciones del menú colapsable */
+.menu-options {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    z-index: 1099;
+}
+.menu-options.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+.menu-options .option {
+    background: #4c5cff;
+    color: #fff;
+    border: none;
+    border-radius: 24px;
+    padding: 10px 24px;
+    font-size: 1em;
+    box-shadow: 0 2px 8px rgba(76,92,255,0.15);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+}
+.menu-options .option.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    background: linear-gradient(135deg, #6a82fb 0%, #4c5cff 100%);
+}
