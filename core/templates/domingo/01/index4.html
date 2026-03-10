@@ -1,4 +1,4 @@
-                                          
+﻿                                          
 
                        
 {% extends 'base.html' %}
@@ -17,7 +17,7 @@
 
 <!--main starts-->
 <div id="main">
-    {% include 'partials/breadcrumb.html' with breadcrumb_title="I Domingo de Adviento - Esperanza" breadcrumb_items=breadcrumb_items %}
+    {% include 'partials/breadcrumb.html' with breadcrumb_title=seccion_titulo breadcrumb_items=breadcrumb_items %}
     <!--container starts-->
     <div class="container">
 
@@ -576,3 +576,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
 {% endblock %}
 {% endblock content %}
+

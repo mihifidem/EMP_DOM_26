@@ -1,0 +1,80 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<style>
+{% if nino_nombre %}
+.nino-badge {
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    z-index: 9998;
+    background: linear-gradient(135deg, #48c6ef 0%, #6f86d6 100%);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+{% endif %}
+</style>
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'styles.css' %}">
+
+{% if nino_nombre %}
+<div onclick="window.location.href='{% url 'select-nino' %}?next={{ request.path }}'" style="position: fixed; top: 70px; right: 20px; z-index: 9998; background: linear-gradient(135deg, #48c6ef 0%, #6f86d6 100%); color: white; padding: 10px 20px; border-radius: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); font-weight: bold; display: flex; align-items: center; gap: 8px; cursor: pointer;">
+    <span style="font-size: 1.2em;">👶</span>
+    <span>{{ nino_nombre }}</span>
+    <span style="margin-left: 8px; background: rgba(255,255,255,0.3); padding: 4px 12px; border-radius: 12px; font-size: 0.9em;">
+        ⭐ {{ puntos_totales }}
+    </span>
+</div>
+
+<div id="main">
+    {% include 'partials/breadcrumb.html' with breadcrumb_title=breadcrumb_title breadcrumb_items=breadcrumb_items %}
+</div>
+{% endif %}
+
+<div class="microhistoria-container">
+
+<div class="microhistoria-title">MICROHISTORIA</div>
+
+<h2>Jesús crecía en sabiduría</h2>
+
+<div class="microhistoria-text">
+
+En el pequeño pueblo de Nazaret, Jesús crecía como cualquier niño.<br><br>
+
+Ayudaba a José en el taller de carpintería, aprendiendo a trabajar la madera con paciencia y cuidado.<br><br>
+
+También escuchaba con atención las historias que María le contaba sobre Dios, sobre los profetas y sobre el amor que Dios tenía por todas las personas.<br><br>
+
+Jesús hacía muchas preguntas, observaba el mundo y siempre buscaba hacer el bien.<br><br>
+
+Era amable con los vecinos, ayudaba a quienes lo necesitaban y trataba a todos con respeto.<br><br>
+
+Con el paso de los años, Jesús no solo crecía en estatura, sino también en sabiduría, bondad y amor.<br><br>
+
+Y todos los que lo conocían se daban cuenta de que había algo especial en él.<br><br>
+
+</div>
+
+<div class="microhistoria-final">
+✨ Jesús crecía cada día en sabiduría, en amor y en la gracia de Dios. ❤️
+</div>
+
+<button class="audio-btn" onclick="document.getElementById('audio').play()">🔊 Escuchar narración</button>
+
+<a style="text-decoration: none;" class="audio-btn" href="{% url 'domingo6' %}">← volver</a>
+
+<audio id="audio" src="{% static '/musica/09/DOM09_MH01.mp3' %}"></audio>
+
+<img style="margin-top: 1em;" src="{% static 'images/domingos/09/DOM09_MHi01.png' %}" alt="">
+</div>
+
+{% include 'partials/quick-menu.html' %}
+
+{% endblock %}

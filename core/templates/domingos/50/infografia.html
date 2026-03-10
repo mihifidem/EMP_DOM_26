@@ -1,0 +1,33 @@
+﻿{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+
+  
+{% if nino_nombre %}
+<div onclick="window.location.href='{% url 'select-nino' %}?next={{ request.path }}'" style="position: fixed; top: 70px; right: 20px; z-index: 9998; background: linear-gradient(135deg, #48c6ef 0%, #6f86d6 100%); color: white; padding: 10px 20px; border-radius: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); font-weight: bold; display: flex; align-items: center; gap: 8px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 6px 16px rgba(0,0,0,0.4)';" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.3)';">
+    <span style="font-size: 1.2em;">👶</span>
+    <span>{{ nino_nombre }}</span>
+    <span style="margin-left: 8px; background: rgba(255,255,255,0.3); padding: 4px 12px; border-radius: 12px; font-size: 0.9em; display: flex; align-items: center; gap: 4px;">
+        ⭐ {{ puntos_totales }}
+    </span>
+</div>
+
+
+<div id="main">
+    {% include 'partials/breadcrumb.html' with breadcrumb_title=breadcrumb_title breadcrumb_items=breadcrumb_items %}
+</div>                                                                                          
+{% endif %}
+
+<div style="width: 100%; text-align: center; padding: 40px 20px;">
+    <img src="{% static 'images/extra/50/DOM50PR03.png' %}" alt="Infografía" style="max-width: 1200px; width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+
+</div>
+
+{% include 'partials/quick-menu.html' %}
+
+{% endblock %}
+
+

@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<style>
+{% if nino_nombre %}
+.nino-badge {
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    z-index: 9998;
+    background: linear-gradient(135deg, #48c6ef 0%, #6f86d6 100%);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+{% endif %}
+</style>
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'styles.css' %}">
+
+{% if nino_nombre %}
+<div onclick="window.location.href='{% url 'select-nino' %}?next={{ request.path }}'" style="position: fixed; top: 70px; right: 20px; z-index: 9998; background: linear-gradient(135deg, #48c6ef 0%, #6f86d6 100%); color: white; padding: 10px 20px; border-radius: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); font-weight: bold; display: flex; align-items: center; gap: 8px; cursor: pointer;">
+    <span style="font-size: 1.2em;">👶</span>
+    <span>{{ nino_nombre }}</span>
+    <span style="margin-left: 8px; background: rgba(255,255,255,0.3); padding: 4px 12px; border-radius: 12px; font-size: 0.9em;">
+        ⭐ {{ puntos_totales }}
+    </span>
+</div>
+
+<div id="main">
+    {% include 'partials/breadcrumb.html' with breadcrumb_title=breadcrumb_title breadcrumb_items=breadcrumb_items %}
+</div>
+{% endif %}
+
+<div class="microhistoria-container">
+
+<div class="microhistoria-title">MICROHISTORIA</div>
+
+<h2>La luz que llegó al templo</h2>
+
+<div class="microhistoria-text">
+
+Un día, María y José llevaron al pequeño Jesús al templo de Jerusalén.<br><br>
+
+Era un momento especial, porque querían presentarlo a Dios, como hacían todas las familias.<br><br>
+
+Mientras caminaban por el templo, un anciano llamado Simeón vio al niño y sintió una gran alegría.<br><br>
+
+Lo tomó en sus brazos y dijo con emoción:<br>
+
+—¡Ahora mis ojos han visto la luz que Dios envía al mundo!<br><br>
+
+Simeón sabía que Jesús traería esperanza y amor a todas las personas.<br><br>
+
+Por eso, en la fiesta de la Candelaria encendemos velas para recordar que Jesús es la luz que ilumina nuestro camino.<br><br>
+
+Desde aquel día, cada vez que una vela se enciende, recordamos que la luz de Jesús siempre está con nosotros.<br><br>
+
+</div>
+
+<div class="microhistoria-final">
+✨ Jesús es la luz del mundo. 🕯️
+</div>
+
+<button class="audio-btn" onclick="document.getElementById('audio').play()">🔊 Escuchar narración</button>
+
+<a style="text-decoration: none;" class="audio-btn" href="{% url 'domingo6' %}">← volver</a>
+
+<audio id="audio" src="{% static '/musica/11/DOM11_MH01.mp3' %}"></audio>
+
+<img style="margin-top: 1em;" src="{% static 'images/domingos/11/DOM11_MHi01.png' %}" alt="">
+</div>
+
+{% include 'partials/quick-menu.html' %}
+
+{% endblock %}

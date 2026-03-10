@@ -1,0 +1,548 @@
+﻿{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+{% if nino_nombre %}
+<div onclick="window.location.href='{% url 'select-nino' %}?next={{ request.path }}'"
+    style="position: fixed; top: 70px; right: 20px; z-index: 9998; background: linear-gradient(135deg, #48c6ef 0%, #6f86d6 100%); color: white; padding: 10px 20px; border-radius: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); font-weight: bold; display: flex; align-items: center; gap: 8px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s;"
+    onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 6px 16px rgba(0,0,0,0.4)';"
+    onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 12px rgba(0,0,0,0.3)';">
+    <span style="font-size: 1.2em;">👶</span>
+    <span>{{ nino_nombre }}</span>
+    <span
+        style="margin-left: 8px; background: rgba(255,255,255,0.3); padding: 4px 12px; border-radius: 12px; font-size: 0.9em; display: flex; align-items: center; gap: 4px;">
+        ⭐ {{ puntos_totales }}
+    </span>
+</div>
+{% endif %}
+
+<!--main starts-->
+<div id="main">
+    {% include 'partials/breadcrumb.html' with breadcrumb_title=seccion_titulo breadcrumb_items=breadcrumb_items %}
+
+    <!--container starts-->
+    <div class="container">
+        <!-- Hero section con fondo negro -->
+        <section class="hero-black">
+            <div style="position: relative; margin: 0; padding: 0;">
+                <!-- Video inicial (apagado) -->
+                <!-- <video id="video-apagado" autoplay loop muted playsinline
+                    style="width: 100%; height: auto;  display: block; margin: 0; padding: 0; transition: opacity 1.5s ease;">
+                    <source src="{% static 'images/hero/11/DOM11101.mp4' %}" type="video/mp4">
+                </video> -->
+                <img src="{% static 'images/hero/11/DOM11101.png' %}" alt="Hero Image"/>
+
+                <!-- Video encendido (oculto inicialmente) -->
+                <video id="video-encendido" autoplay loop muted playsinline
+                    style="position: absolute; top: 130px; left: 0; width: 100%; height: auto; margin: 0; padding: 0; opacity: 0; transition: opacity 1.5s ease;">
+                    <source src="{% static 'images/hero/11/DOM11102.mp4' %}" type="video/mp4">
+                </video>
+
+                <!-- Botón encender vela centrado sobre el video -->
+                <button id="btn-encender"
+                    style="position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); padding: 10px 30px; font-size: 1.2em; background: #ffcc00; color: #222; border: none; border-radius: 6px; cursor: pointer; z-index: 10; box-shadow: 0 4px 12px rgba(0,0,0,0.4);">Encender
+                    vela</button>
+            </div>
+
+            <audio id="audio-vela" src="{% static 'musica/11/DOM11_C01.mp3' %}"></audio>
+
+        </section>
+
+
+
+        </section>
+        <!--primary/secondary flex layout starts-->
+        <div class="main-flex">
+            <section id="primary">
+
+                <article class="blog-entry">
+                    <div class="blog-entry-inner">
+                        <div class="entry-meta">
+                            <div class="date">
+                                <span> Presentación</span>
+                                <!-- <p> Adviento </p>  -->
+                            </div>
+                            <a href="#" class="comments">
+                                12 <span class="fa fa-eye"> </span>
+                            </a>
+                            <a href="#" class="entry_format"><span class="fa fa-headphones"></span></a>
+                        </div>
+                        <div class="entry-thumb">
+                            <a href="#"><img src="http://via.placeholder.com/1170x711" alt="" title=""></a>
+                        </div>
+                        <img src="{% static 'images/hero/apostoles_12.png' %}" alt="" title="">
+
+                        <div class="entry-details">
+
+                            <div class="entry-title">
+                                <h3> Domingo 11 – Candelaria: Presentación de Jesús en el Templo </h3>
+                            </div>
+
+                            <blockquote class="alignright pink">
+                                <q>Jesús,
+                                    tú eres la luz del mundo.
+                                    Ilumina mi corazón
+                                    para que pueda hacer el bien.
+                                    Amén.</q>
+                            </blockquote>
+                            <!--entry-metadata ends-->
+
+                            <div class="entry-body">
+                                <p>
+                                    Queridos niños,<br>
+                                    hoy recordamos un momento muy especial en la vida de Jesús.<br>
+                                    María y José llevaron al niño Jesús al templo para presentarlo a Dios.<br>
+                                    <br>
+                                    Allí se encontraron con un anciano llamado Simeón.<br>
+                                    Cuando vio a Jesús en brazos de María,
+                                    se llenó de alegría.<br>
+                                    <br>
+                                    Simeón dijo algo muy bonito sobre Jesús.<br>
+                                    Dijo que Jesús sería <strong>la luz para todos los pueblos</strong>.<br>
+                                    <br>
+                                    Por eso este día también se llama <strong>la Candelaria</strong>.<br>
+                                    En muchas iglesias se encienden velas
+                                    para recordar que Jesús es la luz
+                                    que ilumina nuestro camino.<br>
+                                    <br>
+                                    Cuando seguimos a Jesús,
+                                    también nosotros podemos ser
+                                    un poquito de luz para los demás.<br>
+                                    <br>
+                                    Cada gesto de amor,
+                                    cada ayuda que damos,
+                                    cada palabra amable,
+                                    hace que la luz de Jesús
+                                    brille en el mundo.<br>
+                                </p>
+                            </div>
+
+                            <div class="entry-title">
+                                <h3> Propuesta para vivir esta semana </h3>
+                            </div>
+                            <!--entry-metadata ends-->
+
+                            <div class="entry-body">
+                                <p>
+                                    Esta semana intenta ser una pequeña luz.<br>
+                                    <br>
+                                    Puedes intentar:<br>
+                                    Ayudar a alguien que lo necesite.<br>
+                                    Compartir con alegría.<br>
+                                    Decir palabras que animen a los demás.<br>
+                                    <br>
+                                    Cuando hacemos el bien,
+                                    la luz de Jesús brilla en nosotros.<br>
+                                    <br>
+                                    Y antes de dormir, puedes decir:
+                                </p>
+
+                                <blockquote class="pink">
+                                    <q>Jesús,
+                                        gracias por ser mi luz.
+                                        Ayúdame a iluminar
+                                        la vida de los demás
+                                        con amor.
+                                        Amén.</q>
+                                </blockquote>
+
+                            </div>
+
+                        </div>
+                </article>
+                <!--commententries starts-->
+                <div class="commententries">
+                    <h2 class="dt-sc-hr-green-title"> Citas bíblicas </h2>
+                    <h2 class="dt-sc-title"><span>Los Evangelistas</span></h2>
+                    <div class="evangelistas">
+                        <img src="{% static 'images/hero/Lc.png' %}" alt="Lucas" title="">
+                        <img src="{% static 'images/hero/Jn.png' %}" alt="Juan" title="">
+                        <img src="{% static 'images/hero/Mt.png' %}" alt="Mateo" title="">
+                        <img src="{% static 'images/hero/Mc.png' %}" alt="Marcos" title="">
+
+                    </div>
+
+
+                    <ul class="commentlist">
+    <li>
+        <article class="comment">
+            <header class="comment-author">
+                <img class="item-mask" src="{% static 'images/hero/Lc_avatar.png' %}" alt="" title="">
+            </header>
+            <section class="comment-details">
+                <div class="author-name">
+                    <a href="">(Lucas 2,30-32)</a>
+                </div>
+                <div class="comment-body">
+                    <div class="comment-content">
+                        <p>“Mis ojos han visto tu salvación,
+                            luz para iluminar
+                            a todas las naciones
+                            y gloria de tu pueblo.”</p>
+                    </div>
+                </div>
+            </section>
+        </article>
+    </li>
+
+    <li>
+        <article class="comment">
+            <header class="comment-author">
+                <img class="item-mask" src="{% static 'images/hero/Lc_avatar.png' %}" alt="" title="">
+            </header>
+            <section class="comment-details">
+                <div class="author-name">
+                    <a href="">(Lucas 2,22)</a>
+                </div>
+                <div class="comment-body">
+                    <div class="comment-content">
+                        <p>“María y José llevaron al niño Jesús
+                            a Jerusalén
+                            para presentarlo al Señor.”</p>
+                    </div>
+                </div>
+            </section>
+        </article>
+    </li>
+</ul>
+                    <!-- <div id="respond" class="comment-respond">
+                    <br>
+                    <h2>Mándanos tús comentarios</h2>
+                    <form method="post" action="#" id="commentform" class="comment-form">
+                        <p class="column dt-sc-one-half first">
+                            <input id="author" name="author" type="text" placeholder="Nombre" required="">
+                        </p>
+                        <p class="column dt-sc-one-half">
+                            <input id="email" name="email" type="email" placeholder="Correo electrónico" required="">
+                        </p>
+                        <p>
+                            <textarea id="comment" name="comment" placeholder="Message"></textarea>
+                        </p>
+                        <p>
+                            <input name="submit" type="submit" id="submit" value="Enviar comentario">
+                        </p>
+                    </form>
+                </div> -->
+
+                </div>
+                <!--commententries ends-->
+                <div style="width:100%;text-align:center;margin-bottom:1em;">
+                  <div style="width:100%;text-align:center;margin-bottom:1em;">
+    <h2 class="dt-sc-hr-green-title" style="margin-bottom: 0; text-align:center;">
+        🕯️ Para los padres – Domingo 11: La Candelaria
+    </h2>
+
+    <img src="{% static 'images/hero/gely_family.png' %}" alt="familia"
+        style="max-width: 300px; width: 100%; height: auto;">
+</div>
+
+<div class="padres-ritual">
+
+    <h3>Una reflexión pedagógica sobre la luz que guía</h3>
+
+    <p>
+        Queridas familias, el domingo dedicado a la <strong>Candelaria</strong>
+        nos recuerda el momento en que María y José presentan al niño Jesús
+        en el templo. Allí, el anciano Simeón reconoce en Jesús
+        <em>la luz que ilumina a todas las personas</em>.
+    </p>
+
+    <p>
+        La imagen de la luz tiene un significado muy profundo para los niños.
+        Desde pequeños comprenden que la luz orienta, acompaña
+        y ayuda a no perderse en la oscuridad.
+        Por eso, la tradición de encender velas en esta fiesta
+        se convierte en un símbolo muy accesible para la infancia.
+    </p>
+
+    <p>
+        Desde la pedagogía infantil, los símbolos sencillos
+        permiten transmitir valores importantes de manera concreta.
+        La luz puede representar la bondad, la esperanza,
+        el acompañamiento y la confianza.
+    </p>
+
+    <h4>1️⃣ La importancia de los símbolos</h4>
+    <p>
+        Los niños comprenden mejor las ideas cuando se apoyan
+        en imágenes y gestos concretos.
+        Encender una vela puede convertirse en un pequeño ritual familiar
+        que ayude a explicar que la fe también ilumina la vida.
+    </p>
+
+    <h4>2️⃣ La familia como primera luz</h4>
+    <p>
+        En el desarrollo infantil, los padres representan
+        la primera referencia de seguridad y orientación.
+        El cariño, la presencia y el acompañamiento cotidiano
+        son la luz que guía el crecimiento emocional del niño.
+    </p>
+
+    <h4>3️⃣ Educar en esperanza</h4>
+    <p>
+        Hablar de la luz también significa transmitir esperanza.
+        Cuando los niños perciben que siempre hay soluciones,
+        apoyo y diálogo, aprenden a afrontar las dificultades
+        con mayor serenidad.
+    </p>
+
+    <hr>
+
+    <h3>🏠 Sugerencia práctica para este domingo</h3>
+
+    <ul>
+        <li>Encended juntos una pequeña vela en casa.</li>
+        <li>Explicad a vuestro hijo que la luz representa el amor y la esperanza.</li>
+        <li>Podéis compartir algo bueno que haya iluminado vuestra semana.</li>
+    </ul>
+
+    <blockquote class="pink">
+        Señor Jesús,<br>
+        luz que ilumina nuestro camino,<br>
+        bendice nuestras familias.<br>
+        Que en nuestro hogar siempre haya esperanza,<br>
+        bondad y alegría.<br>
+        Amén.
+    </blockquote>
+
+    <p>
+        Los pequeños rituales familiares ayudan a los niños
+        a comprender valores abstractos de forma concreta.
+        La experiencia compartida fortalece la memoria emocional
+        y crea recuerdos significativos.
+    </p>
+
+    <hr>
+
+    <h3>💛 Clave educativa</h3>
+
+    <p>
+        La Candelaria nos recuerda que la luz también puede
+        encontrarse en los gestos cotidianos:
+        una palabra amable, una ayuda ofrecida
+        o un momento de atención.
+    </p>
+
+    <p>
+        Cuando el hogar transmite esperanza y confianza,
+        los hijos aprenden a reconocer la luz
+        que guía sus propios pasos.
+    </p>
+
+</div>
+
+<h2 class="dt-sc-hr-green-title">🕯️ Caminar siempre hacia la luz</h2>
+            </section>
+            <!--primary ends-->
+            <!--secondary starts-->
+            <section id="secondary">
+
+                <aside class="widget widget_categories">
+                    <h3 class="widgettitle">Secciones</h3>
+                    <ul>
+                        <li>
+                            <a href="/domingo/11/canciones">Canciones</a>
+                        </li>
+                        <li>
+                            <a href="/domingo/11/microhistoria">Microhistoria</a>
+                        </li>
+                        <li>
+                            <a href="/domingo/11/karaoke">Karaoke</a>
+                        </li>
+                        <li>
+                            <a href="/domingo/11/game">Juego</a>
+                        </li>
+                        <li>
+                            <a href="/domingo/11/infografia">Infografía</a>
+                        </li>
+                        <!-- <li style="border-left: 3px solid #48c6ef;">
+                                                <a href="{% url 'seccion-tareas' 1 %}" style="color: #667eea; font-weight: 600;">📝 Mis Tareas</a>
+                                        </li> -->
+                    </ul>
+                    <div class="widget reto-semanal" style="margin-top:2em;">
+                        <h3 class="widgettitle">📝 Tareas Pendientes</h3>
+                        <div id="tareas-container">
+                            {% if tareas_progreso %}
+                            {% for item in tareas_progreso %}
+                            <label class="tarea-item {% if item.completada %}completada{% endif %}"
+                                style="display:flex;align-items:center;gap:0.5em;margin-bottom:0.7em;padding:8px;border-radius:8px;transition:all 0.3s;cursor:pointer;{% if item.completada %}background:#f0f9ff;opacity:0.7;{% endif %}"
+                                data-tarea-id="{{ item.tarea.id }}">
+                                <input type="checkbox" {% if item.completada %}checked{% endif %}
+                                    onchange="toggleTareaWidget({{ item.tarea.id }}, this)"
+                                    style="cursor:pointer;width:18px;height:18px;">
+                                <span style="flex:1;">{{ item.tarea.titulo }}</span>
+                                {% if item.completada and item.fecha_completado %}
+                                <small style="color:#059669;font-size:0.75em;">✓</small>
+                                {% endif %}
+                            </label>
+                            {% endfor %}
+                            {% else %}
+                            <p style="color:#999;font-size:0.9em;text-align:center;padding:1em 0;">No hay tareas
+                                asignadas</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                </aside>
+
+                <aside class="widget widget_text">
+                    <h3 class="widgettitle">El vídeo</h3>
+                    <p>
+                        En este vídeo profundizaremos en el significado del IV Domingo de Adviento,
+                        centrado en la figura de María y su respuesta confiada.
+                        Reflexionaremos sobre cómo preparar el camino del Señor
+                        también implica educar en la confianza, en la disponibilidad
+                        y en la capacidad de decir “sí” incluso cuando no lo entendemos todo.
+                        Descubriremos cómo, a través de gestos sencillos en la vida familiar,
+                        podemos ayudar a nuestros hijos a aprender que confiar
+                        es sentirse acompañados y sostenidos por el amor de Dios.
+                    </p>
+                    <video width="420" controls style="max-width: 100%; border-radius: 8px;">
+                        <source src="{% static 'images/extra/04/DOM04PR01.mp4' %}" type="video/mp4">
+                        Tu navegador no soporta el elemento de video.
+                    </video>
+                </aside>
+
+
+
+
+
+                <aside class="widget widget_tag_cloud">
+                    <h3 class="widgettitle">Hashtags</h3>
+                    <div class="tagcloud ">
+                        <a href="">Luz</a>
+                        <a href="">Templo</a>
+                        <a href="">Esperanza</a>
+                        <a href="">Presentación</a>
+                        
+                    </div>
+                </aside>
+
+        </div>
+        </aside>
+
+        <aside class="widget widget_escape_room"
+            style="margin-top:2em; background: linear-gradient(120deg,#f3e7ff 60%,#e0e7ff 100%); border-radius: 1.2em; box-shadow: 0 2px 12px #c328f122; padding: 1.2em 1em; text-align: center;">
+            <h3 class="widgettitle" style="color:#7b2ff2; margin-bottom:0.7em;">Escape Room</h3>
+            <div style="font-size:1.08em; color:#4a2fa7; margin-bottom:1.1em;">
+                ¿Te atreves a resolver los enigmas del <b>IV Domingo de Adviento</b>?<br>
+                Pon a prueba tu ingenio y descubre el mensaje secreto de la esperanza.
+            </div>
+            <a href="/domingo/1/escape-room"
+                style="display:inline-block; background:linear-gradient(90deg,#c328f1 0%,#7b2ff2 100%); color:#fff; font-weight:bold; border-radius:2em; padding:0.7em 2em; font-size:1.1em; box-shadow:0 2px 8px #c328f155; text-decoration:none; transition:background 0.2s,transform 0.2s; margin-top:0.5em;">
+                ¡Entrar al Escape Room!
+            </a>
+        </aside>
+        </section>
+        <!--secondary ends-->
+    </div>
+
+</div>
+<!--container ends-->
+</div>
+<!--main ends-->
+{% include 'partials/quick-menu.html' %}
+
+{% block extra_js %}
+<script src="{% static 'js/jquery.js' %}"></script>
+<script src="{% static 'js/jquery-ui.min.js' %}"></script>
+<script src="{% static 'js/shortcodes.js' %}"></script>
+
+<script>
+    // Función para toggle de tareas en el widget
+    function toggleTareaWidget(tareaId, checkbox) {
+        const label = checkbox.closest('.tarea-item');
+
+        fetch(`/tarea/${tareaId}/toggle/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': getCookie('csrftoken')
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    if (data.completada) {
+                        label.classList.add('completada');
+                        label.style.background = '#f0f9ff';
+                        label.style.opacity = '0.7';
+                    } else {
+                        label.classList.remove('completada');
+                        label.style.background = '';
+                        label.style.opacity = '';
+                    }
+                } else {
+                    // Revertir checkbox si hay error
+                    checkbox.checked = !checkbox.checked;
+                    alert('Error: ' + (data.error || 'No se pudo actualizar la tarea'));
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                checkbox.checked = !checkbox.checked;
+                alert('Ocurrió un error al actualizar la tarea');
+            });
+    }
+
+    // Función para obtener el token CSRF
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    }
+
+    // Registrar actividad de video cuando se carga la página
+    document.addEventListener('DOMContentLoaded', function () {
+        var btnEncender = document.getElementById('btn-encender');
+        var videoApagado = document.getElementById('video-apagado');
+        var videoEncendido = document.getElementById('video-encendido');
+        var audioVela = document.getElementById('audio-vela');
+        var velaEncendida = false;
+
+        if (btnEncender) {
+            btnEncender.addEventListener('click', function () {
+                if (!velaEncendida) {
+                    velaEncendida = true;
+
+                    // Reproducir audio
+                    if (audioVela) {
+                        audioVela.play();
+                    }
+
+                    // Transición de fundido entre videos
+                    videoApagado.style.opacity = '0';
+                    videoEncendido.style.opacity = '1';
+
+                    // Cambiar texto del botón
+                    btnEncender.textContent = 'Vela encendida';
+                    btnEncender.style.background = '#ff6b6b';
+                    btnEncender.style.cursor = 'default';
+                }
+            });
+        }
+
+        // Registrar que el usuario vio el video (solo una vez por sección)
+        setTimeout(function () {
+            fetch('/domingo/2/actividad/video/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': getCookie('csrftoken')
+                }
+            })
+                .catch(error => console.log('Video activity logged'));
+        }, 500);
+    });
+</script>
+
+{% endblock %}
+{% endblock content %}

@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<style>
+{% if nino_nombre %}
+.nino-badge {
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    z-index: 9998;
+    background: linear-gradient(135deg, #48c6ef 0%, #6f86d6 100%);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+{% endif %}
+
+.btn-volver-micro {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 30px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-volver-micro:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+</style>
+
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'styles.css' %}">
+
+{% if nino_nombre %}
+<div onclick="window.location.href='{% url 'select-nino' %}?next={{ request.path }}'" style="position: fixed; top: 70px; right: 20px; z-index: 9998; background: linear-gradient(135deg, #48c6ef 0%, #6f86d6 100%); color: white; padding: 10px 20px; border-radius: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); font-weight: bold; display: flex; align-items: center; gap: 8px; cursor: pointer;">
+    <span style="font-size: 1.2em;">👶</span>
+    <span>{{ nino_nombre }}</span>
+    <span style="margin-left: 8px; background: rgba(255,255,255,0.3); padding: 4px 12px; border-radius: 12px; font-size: 0.9em;">
+        ⭐ {{ puntos_totales }}
+    </span>
+</div>
+
+<div id="main">
+    {% include 'partials/breadcrumb.html' with breadcrumb_title=breadcrumb_title breadcrumb_items=breadcrumb_items %}
+</div>
+{% endif %}
+
+
+<div class="microhistoria-container">
+
+<div class="microhistoria-title">MICROHISTORIA</div>
+
+<h2>La pequeña estrella de Navidad</h2>
+
+<div class="microhistoria-text">
+
+En un pequeño pueblo, la noche de Navidad estaba llena de estrellas.<br><br>
+
+Un niño llamado Mateo caminaba con su abuela mirando el cielo.<br><br>
+
+—¿Por qué brillan tanto las estrellas hoy? —preguntó Mateo.<br><br>
+
+La abuela sonrió y le contó que hace muchos años una estrella muy especial guio a las personas hasta Belén, donde había nacido el niño Jesús.<br><br>
+
+Mateo miró su pequeña linterna y dijo:<br><br>
+
+—Entonces yo también quiero ser como esa estrella.<br><br>
+
+Esa noche Mateo ayudó a poner la mesa, compartió sus dulces con su hermana y abrazó fuerte a su familia.<br><br>
+
+La abuela le dijo:<br><br>
+
+—¿Ves? Cada vez que haces algo bueno, también haces que el mundo brille un poquito más.<br><br>
+
+Y Mateo entendió que la verdadera luz de la Navidad está en amar y compartir con los demás. 🎄✨<br><br>
+
+</div>
+
+<div class="microhistoria-final">
+✨ La Navidad brilla más cuando compartimos amor, alegría y bondad con los demás. ❤️
+</div>
+
+<button class="audio-btn" onclick="document.getElementById('audio').play()">🔊 Escuchar narración</button>
+
+<a style="text-decoration: none;" class="audio-btn" href="{% url 'domingo5' %}">← volver</a>
+
+<audio id="audio" src="{% static '/musica/05/DOM05_MH01.mp3' %}"></audio>
+
+<img style="margin-top: 1em;" src="{% static 'images/domingos/05/DOM05_MHi01.png' %}" alt="">
+
+</div>
+
+{% include 'partials/quick-menu.html' %}
+
+{% endblock %}

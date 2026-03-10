@@ -1,5 +1,21 @@
 from django.contrib import admin
-from .models import Author, Category, Publisher, Book, Section, Tarea, TareaNino
+from .models import Author, Category, Publisher, Book, Section, Tarea, TareaNino, ColorCard
+
+
+@admin.register(ColorCard)
+class ColorCardAdmin(admin.ModelAdmin):
+    list_display = ['display_name', 'nombre', 'es_liturgico', 'descripcion_liturgica']
+    list_filter = ['es_liturgico']
+    search_fields = ['nombre', 'display_name', 'descripcion_liturgica']
+    fieldsets = (
+        ('Información del Color', {
+            'fields': ('nombre', 'display_name', 'gradiente_css')
+        }),
+        ('Propiedades Litúrgicas', {
+            'fields': ('es_liturgico', 'descripcion_liturgica'),
+            'description': 'Marque si es un color del calendario litúrgico cristiano'
+        }),
+    )
 
 
 @admin.register(Author)

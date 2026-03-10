@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+﻿{% extends 'base.html' %}
 {% load static %}
 {% block content %}
 
@@ -18,17 +18,18 @@
 
 <!--main starts-->
 <div id="main">
-    {% include 'partials/breadcrumb.html' with breadcrumb_title="II Domingo de Adviento - Paz" breadcrumb_items=breadcrumb_items %}
+    {% include 'partials/breadcrumb.html' with breadcrumb_title=seccion_titulo breadcrumb_items=breadcrumb_items %}
 
     <!--container starts-->
     <div class="container">
         <!-- Hero section con fondo negro -->
         <section class="hero-black" >
-            <div style="position: relative; margin: 0; padding: 0;">
+            <div style="position: relative; margin: 0; padding: 0;"> 
+                <img src="{% static 'images/hero/02/DOM02_100.png' %}" alt="paz en varios idiomas"/>
+
                 <!-- Video inicial (apagado) -->
                 <video id="video-apagado" autoplay loop muted playsinline
                     style="width: 100%; height: auto;  display: block; margin: 0; padding: 0; transition: opacity 1.5s ease;">
-                    <source src="{% static 'images/hero/02/DOM02101.mp4' %}" type="video/mp4">
                 </video>
                 
                 <!-- Video encendido (oculto inicialmente) -->
@@ -475,18 +476,38 @@
 <script src="{% static 'js/shortcodes.js' %}"></script>
 
 <script>
+    const templateCsrfToken = '{{ csrf_token }}';
+
     // Función para toggle de tareas en el widget
     function toggleTareaWidget(tareaId, checkbox) {
         const label = checkbox.closest('.tarea-item');
+        const csrfToken = getCookie('csrftoken') || (templateCsrfToken !== 'NOTPROVIDED' ? templateCsrfToken : '');
 
         fetch(`/tarea/${tareaId}/toggle/`, {
             method: 'POST',
+            credentials: 'same-origin',
             headers: {
                 'Content-Type': 'application/json',
-                'X-CSRFToken': getCookie('csrftoken')
+                'X-CSRFToken': csrfToken,
+                'X-Requested-With': 'XMLHttpRequest'
             }
         })
-            .then(response => response.json())
+            .then(async response => {
+                const contentType = response.headers.get('content-type') || '';
+                let data = {};
+
+                if (contentType.includes('application/json')) {
+                    data = await response.json();
+                } else {
+                    data = { error: `HTTP ${response.status}: respuesta no JSON` };
+                }
+
+                if (!response.ok) {
+                    data.success = false;
+                }
+
+                return data;
+            })
             .then(data => {
                 if (data.success) {
                     if (data.completada) {
@@ -501,7 +522,7 @@
                 } else {
                     // Revertir checkbox si hay error
                     checkbox.checked = !checkbox.checked;
-                    alert('Error: ' + (data.error || 'No se pudo actualizar la tarea'));
+                    alert('Error: ' + (data.error || 'No se pudo actualizar la tarea. Verifica sesión y niño seleccionado.'));
                 }
             })
             .catch(error => {
@@ -573,3 +594,4 @@
 
 {% endblock %}
 {% endblock content %}
+

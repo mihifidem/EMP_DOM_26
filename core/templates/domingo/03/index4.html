@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+﻿{% extends 'base.html' %}
 {% load static %}
 {% block content %}
 
@@ -18,7 +18,7 @@
 
 <!--main starts-->
 <div id="main">
-    {% include 'partials/breadcrumb.html' with breadcrumb_title="III Domingo de Adviento - Alegría" breadcrumb_items=breadcrumb_items %}
+    {% include 'partials/breadcrumb.html' with breadcrumb_title=seccion_titulo breadcrumb_items=breadcrumb_items %}
 
     <!--container starts-->
     <div class="container">
@@ -572,3 +572,4 @@
 
 {% endblock %}
 {% endblock content %}
+

@@ -1,0 +1,105 @@
+[
+{"numero_domingo":1,"titulo":"I Domingo de Adviento (Esperanza)","descripcion":"Inicio del Adviento, tiempo para despertar la esperanza y prepararse para la llegada de Jesús.","fecha_inicio":"2026-01-01","fecha_fin":"2026-01-07","tareas":["Dibujar una vela de Adviento","Escribir la palabra esperanza","Colorear una estrella","Hacer una oración corta"]},
+
+{"numero_domingo":2,"titulo":"II Domingo de Adviento (Paz)","descripcion":"Este domingo invita a preparar el corazón con paz para recibir a Jesús.","fecha_inicio":"2026-01-08","fecha_fin":"2026-01-14","tareas":["Dibujar una paloma","Escribir una acción de paz","Colorear la segunda vela","Dar un abrazo de paz"]},
+
+{"numero_domingo":3,"titulo":"III Domingo de Adviento (Gozo)","descripcion":"Se celebra la alegría porque la Navidad está cerca.","fecha_inicio":"2026-01-15","fecha_fin":"2026-01-21","tareas":["Dibujar una sonrisa","Escribir algo que te haga feliz","Cantar una canción navideña","Colorear la corona de Adviento"]},
+
+{"numero_domingo":4,"titulo":"IV Domingo de Adviento (Amor)","descripcion":"Recordamos el amor de Dios y el sí de María para que naciera Jesús.","fecha_inicio":"2026-01-22","fecha_fin":"2026-01-28","tareas":["Dibujar un corazón","Escribir una frase sobre el amor","Ayudar en casa","Colorear a María"]},
+
+{"numero_domingo":5,"titulo":"Navidad","descripcion":"Celebración del nacimiento de Jesús en Belén.","fecha_inicio":"2026-01-29","fecha_fin":"2026-02-04","tareas":["Dibujar el nacimiento","Escribir Feliz Navidad","Colorear un árbol","Compartir un dulce"]},
+
+{"numero_domingo":6,"titulo":"Sagrada Familia","descripcion":"Recordamos la familia de Jesús como ejemplo de amor y unión.","fecha_inicio":"2026-02-05","fecha_fin":"2026-02-11","tareas":["Dibujar tu familia","Escribir gracias a tu familia","Ayudar en casa","Colorear una casa"]},
+
+{"numero_domingo":7,"titulo":"Epifanía","descripcion":"Celebramos cuando los Reyes Magos visitaron a Jesús.","fecha_inicio":"2026-02-12","fecha_fin":"2026-02-18","tareas":["Dibujar tres coronas","Colorear los Reyes Magos","Escribir un regalo simbólico","Hacer una estrella"]},
+
+{"numero_domingo":8,"titulo":"Bautismo de Jesús","descripcion":"Recordamos el bautismo de Jesús en el río Jordán.","fecha_inicio":"2026-02-19","fecha_fin":"2026-02-25","tareas":["Dibujar agua y paloma","Escribir tu nombre de bautismo","Colorear una iglesia","Decir una oración"]},
+
+{"numero_domingo":9,"titulo":"Jesús crecía en sabiduría","descripcion":"Jesús crecía aprendiendo y ayudando a los demás.","fecha_inicio":"2026-02-26","fecha_fin":"2026-03-04","tareas":["Leer un cuento","Dibujar un libro","Escribir algo aprendido","Ayudar a un amigo"]},
+
+{"numero_domingo":10,"titulo":"Conversión","descripcion":"Invita a cambiar el corazón y acercarse más a Dios.","fecha_inicio":"2026-03-05","fecha_fin":"2026-03-11","tareas":["Escribir algo que mejorar","Dibujar un camino","Pedir perdón","Hacer una buena acción"]},
+
+{"numero_domingo":11,"titulo":"Candelaria","descripcion":"Celebramos a Jesús como luz del mundo.","fecha_inicio":"2026-03-12","fecha_fin":"2026-03-18","tareas":["Dibujar una vela","Colorear una llama","Escribir luz","Encender una vela con un adulto"]},
+
+{"numero_domingo":12,"titulo":"Confianza","descripcion":"Este domingo invita a confiar en Dios en todo momento.","fecha_inicio":"2026-03-19","fecha_fin":"2026-03-25","tareas":["Dibujar manos orando","Escribir confío en Dios","Decir una oración","Ayudar a alguien"]},
+
+{"numero_domingo":13,"titulo":"Miércoles de ceniza","descripcion":"Inicio de la Cuaresma, tiempo de reflexión y cambio.","fecha_inicio":"2026-03-26","fecha_fin":"2026-04-01","tareas":["Dibujar una cruz","Escribir una promesa","Hacer silencio 1 minuto","Ayudar en casa"]},
+
+{"numero_domingo":14,"titulo":"Caminar con Jesús","descripcion":"Seguimos el ejemplo de Jesús en nuestra vida diaria.","fecha_inicio":"2026-04-02","fecha_fin":"2026-04-08","tareas":["Dibujar pasos","Escribir seguir a Jesús","Ayudar a un amigo","Decir gracias"]},
+
+{"numero_domingo":15,"titulo":"Perdón","descripcion":"Jesús nos enseña a perdonar a los demás.","fecha_inicio":"2026-04-09","fecha_fin":"2026-04-15","tareas":["Escribir perdón","Dar un abrazo","Dibujar dos amigos","Pedir perdón"]},
+
+{"numero_domingo":16,"titulo":"Misericordia","descripcion":"Dios es misericordioso y nos invita a amar.","fecha_inicio":"2026-04-16","fecha_fin":"2026-04-22","tareas":["Dibujar un corazón","Ayudar a alguien","Escribir misericordia","Compartir un juguete"]},
+
+{"numero_domingo":17,"titulo":"Tentación","descripcion":"Recordamos que Jesús venció las tentaciones.","fecha_inicio":"2026-04-23","fecha_fin":"2026-04-29","tareas":["Dibujar un desierto","Escribir fuerza","Decir una oración","Elegir hacer el bien"]},
+
+{"numero_domingo":18,"titulo":"Anunciación","descripcion":"El ángel anunció a María que sería madre de Jesús.","fecha_inicio":"2026-04-30","fecha_fin":"2026-05-06","tareas":["Dibujar un ángel","Colorear a María","Escribir sí a Dios","Hacer una oración"]},
+
+{"numero_domingo":19,"titulo":"Domingo de Ramos","descripcion":"Celebramos la entrada de Jesús en Jerusalén.","fecha_inicio":"2026-05-07","fecha_fin":"2026-05-13","tareas":["Dibujar una palma","Colorear un burro","Escribir Hosanna","Agitar una hoja verde"]},
+
+{"numero_domingo":20,"titulo":"Pascua","descripcion":"Celebramos la resurrección de Jesús.","fecha_inicio":"2026-05-14","fecha_fin":"2026-05-20","tareas":["Dibujar una tumba vacía","Escribir Jesús vive","Colorear un sol","Cantar aleluya"]},
+
+{"numero_domingo":21,"titulo":"Divina Misericordia","descripcion":"Recordamos el amor infinito de Dios.","fecha_inicio":"2026-05-21","fecha_fin":"2026-05-27","tareas":["Dibujar rayos de luz","Escribir misericordia","Decir gracias","Ayudar a alguien"]},
+
+{"numero_domingo":22,"titulo":"Alegría Pascual","descripcion":"Tiempo para vivir la alegría de la resurrección.","fecha_inicio":"2026-05-28","fecha_fin":"2026-06-03","tareas":["Dibujar una sonrisa","Escribir alegría","Cantar una canción","Compartir un dulce"]},
+
+{"numero_domingo":23,"titulo":"Fe renovada","descripcion":"Jesús fortalece nuestra fe.","fecha_inicio":"2026-06-04","fecha_fin":"2026-06-10","tareas":["Dibujar una cruz","Escribir fe","Orar en familia","Leer una historia bíblica"]},
+
+{"numero_domingo":24,"titulo":"Buen Pastor","descripcion":"Jesús es el pastor que cuida de sus ovejas.","fecha_inicio":"2026-06-11","fecha_fin":"2026-06-17","tareas":["Dibujar una oveja","Colorear un pastor","Escribir cuidar","Ayudar a alguien"]},
+
+{"numero_domingo":25,"titulo":"Santo Rosario","descripcion":"Recordamos la oración del rosario.","fecha_inicio":"2026-06-18","fecha_fin":"2026-06-24","tareas":["Dibujar cuentas","Colorear a María","Rezar un Ave María","Escribir paz"]},
+
+{"numero_domingo":26,"titulo":"Ascensión de Jesús","descripcion":"Jesús asciende al cielo con el Padre.","fecha_inicio":"2026-06-25","fecha_fin":"2026-07-01","tareas":["Dibujar nubes","Escribir cielo","Colorear a Jesús","Decir una oración"]},
+
+{"numero_domingo":27,"titulo":"Pentecostés","descripcion":"El Espíritu Santo llega a los apóstoles.","fecha_inicio":"2026-07-02","fecha_fin":"2026-07-08","tareas":["Dibujar fuego","Colorear una paloma","Escribir Espíritu Santo","Orar juntos"]},
+
+{"numero_domingo":28,"titulo":"Santísima Trinidad","descripcion":"Celebramos al Padre, Hijo y Espíritu Santo.","fecha_inicio":"2026-07-09","fecha_fin":"2026-07-15","tareas":["Dibujar tres círculos","Escribir Trinidad","Hacer una cruz","Colorear una iglesia"]},
+
+{"numero_domingo":29,"titulo":"Corpus Christi","descripcion":"Celebramos el cuerpo y la sangre de Cristo.","fecha_inicio":"2026-07-16","fecha_fin":"2026-07-22","tareas":["Dibujar un pan","Colorear un cáliz","Escribir gracias Jesús","Ir a misa"]},
+
+{"numero_domingo":30,"titulo":"Sagrado Corazón de Jesús","descripcion":"Recordamos el amor profundo de Jesús.","fecha_inicio":"2026-07-23","fecha_fin":"2026-07-29","tareas":["Dibujar un corazón","Escribir amor","Ayudar a alguien","Decir gracias"]},
+
+{"numero_domingo":31,"titulo":"Amor al prójimo","descripcion":"Jesús nos enseña a amar a los demás.","fecha_inicio":"2026-07-30","fecha_fin":"2026-08-05","tareas":["Ayudar a un amigo","Compartir un juguete","Dibujar dos amigos","Escribir amar"]},
+
+{"numero_domingo":32,"titulo":"Humildad","descripcion":"La humildad nos acerca a Dios.","fecha_inicio":"2026-08-06","fecha_fin":"2026-08-12","tareas":["Dibujar manos","Escribir gracias","Ayudar en casa","Escuchar a otros"]},
+
+{"numero_domingo":33,"titulo":"Justicia","descripcion":"Ser justos significa actuar con verdad.","fecha_inicio":"2026-08-13","fecha_fin":"2026-08-19","tareas":["Dibujar una balanza","Escribir justicia","Decir la verdad","Ayudar a alguien"]},
+
+{"numero_domingo":34,"titulo":"Gratitud","descripcion":"Dar gracias por todo lo que tenemos.","fecha_inicio":"2026-08-20","fecha_fin":"2026-08-26","tareas":["Escribir gracias","Dibujar un regalo","Decir gracias a alguien","Orar"]},
+
+{"numero_domingo":35,"titulo":"Generosidad","descripcion":"Compartir con alegría lo que tenemos.","fecha_inicio":"2026-08-27","fecha_fin":"2026-09-02","tareas":["Compartir un juguete","Dibujar manos dando","Escribir generosidad","Ayudar a alguien"]},
+
+{"numero_domingo":36,"titulo":"Perseverancia","descripcion":"Seguir adelante aunque sea difícil.","fecha_inicio":"2026-09-03","fecha_fin":"2026-09-09","tareas":["Dibujar una meta","Escribir seguir","Intentar algo nuevo","No rendirse"]},
+
+{"numero_domingo":37,"titulo":"Esperanza activa","descripcion":"La esperanza nos anima a seguir confiando.","fecha_inicio":"2026-09-10","fecha_fin":"2026-09-16","tareas":["Dibujar una estrella","Escribir esperanza","Orar","Animar a un amigo"]},
+
+{"numero_domingo":38,"titulo":"Paz interior","descripcion":"La paz nace en el corazón.","fecha_inicio":"2026-09-17","fecha_fin":"2026-09-23","tareas":["Respirar tranquilo","Dibujar una paloma","Escribir paz","Ayudar a alguien"]},
+
+{"numero_domingo":39,"titulo":"Ascensión de la Virgen","descripcion":"Recordamos a María llevada al cielo.","fecha_inicio":"2026-09-24","fecha_fin":"2026-09-30","tareas":["Dibujar a María","Colorear estrellas","Escribir Ave María","Orar"]},
+
+{"numero_domingo":40,"titulo":"Compasión","descripcion":"Ser compasivos con quienes sufren.","fecha_inicio":"2026-10-01","fecha_fin":"2026-10-07","tareas":["Ayudar a alguien","Dibujar un corazón","Escribir ayudar","Escuchar a un amigo"]},
+
+{"numero_domingo":41,"titulo":"Verdad","descripcion":"Jesús nos invita a vivir en la verdad.","fecha_inicio":"2026-10-08","fecha_fin":"2026-10-14","tareas":["Decir la verdad","Dibujar una luz","Escribir verdad","Ayudar a alguien"]},
+
+{"numero_domingo":42,"titulo":"Sabiduría","descripcion":"La sabiduría nos ayuda a elegir el bien.","fecha_inicio":"2026-10-15","fecha_fin":"2026-10-21","tareas":["Dibujar un libro","Escribir aprender","Leer una historia","Escuchar a un adulto"]},
+
+{"numero_domingo":43,"titulo":"Responsabilidad","descripcion":"Cumplir nuestras tareas con amor.","fecha_inicio":"2026-10-22","fecha_fin":"2026-10-28","tareas":["Hacer tareas","Ayudar en casa","Escribir responsabilidad","Ordenar juguetes"]},
+
+{"numero_domingo":44,"titulo":"Solidaridad","descripcion":"Ayudar a quienes lo necesitan.","fecha_inicio":"2026-10-29","fecha_fin":"2026-11-04","tareas":["Compartir comida","Dibujar ayuda","Escribir solidaridad","Ayudar a alguien"]},
+
+{"numero_domingo":45,"titulo":"Confianza en Dios","descripcion":"Confiamos en Dios en todo momento.","fecha_inicio":"2026-11-05","fecha_fin":"2026-11-11","tareas":["Orar","Escribir confío","Dibujar manos","Ayudar a alguien"]},
+
+{"numero_domingo":46,"titulo":"Amor fiel","descripcion":"El amor de Dios es siempre fiel.","fecha_inicio":"2026-11-12","fecha_fin":"2026-11-18","tareas":["Dibujar un corazón","Escribir amor","Ayudar en casa","Dar un abrazo"]},
+
+{"numero_domingo":47,"titulo":"Entrega diaria","descripcion":"Cada día podemos hacer el bien.","fecha_inicio":"2026-11-19","fecha_fin":"2026-11-25","tareas":["Ayudar en casa","Dibujar manos","Escribir servir","Sonreír"]},
+
+{"numero_domingo":48,"titulo":"Vigilancia","descripcion":"Jesús nos invita a estar atentos y preparados.","fecha_inicio":"2026-11-26","fecha_fin":"2026-12-02","tareas":["Dibujar una lámpara","Escribir atentos","Orar","Ayudar a alguien"]},
+
+{"numero_domingo":49,"titulo":"Todos los Santos","descripcion":"Recordamos a los santos que siguieron a Dios.","fecha_inicio":"2026-12-03","fecha_fin":"2026-12-09","tareas":["Dibujar un santo","Escribir santidad","Colorear aureola","Leer una historia"]},
+
+{"numero_domingo":50,"titulo":"Esperanza final","descripcion":"Esperamos el encuentro final con Dios.","fecha_inicio":"2026-12-10","fecha_fin":"2026-12-16","tareas":["Dibujar cielo","Escribir esperanza","Orar","Ayudar"]},
+
+{"numero_domingo":51,"titulo":"Juicio y misericordia","descripcion":"Dios es justo y misericordioso.","fecha_inicio":"2026-12-17","fecha_fin":"2026-12-23","tareas":["Dibujar balanza","Escribir misericordia","Pedir perdón","Ayudar"]},
+
+{"numero_domingo":52,"titulo":"Cristo Rey","descripcion":"Celebramos a Jesús como Rey del universo.","fecha_inicio":"2026-12-24","fecha_fin":"2026-12-31","tareas":["Dibujar una corona","Escribir Cristo Rey","Colorear una cruz","Orar en familia"]}
+]

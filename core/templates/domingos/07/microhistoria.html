@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<style>
+{% if nino_nombre %}
+.nino-badge {
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    z-index: 9998;
+    background: linear-gradient(135deg, #48c6ef 0%, #6f86d6 100%);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+{% endif %}
+</style>
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'styles.css' %}">
+
+{% if nino_nombre %}
+<div onclick="window.location.href='{% url 'select-nino' %}?next={{ request.path }}'" style="position: fixed; top: 70px; right: 20px; z-index: 9998; background: linear-gradient(135deg, #48c6ef 0%, #6f86d6 100%); color: white; padding: 10px 20px; border-radius: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); font-weight: bold; display: flex; align-items: center; gap: 8px; cursor: pointer;">
+    <span style="font-size: 1.2em;">👶</span>
+    <span>{{ nino_nombre }}</span>
+    <span style="margin-left: 8px; background: rgba(255,255,255,0.3); padding: 4px 12px; border-radius: 12px; font-size: 0.9em;">
+        ⭐ {{ puntos_totales }}
+    </span>
+</div>
+
+<div id="main">
+    {% include 'partials/breadcrumb.html' with breadcrumb_title=breadcrumb_title breadcrumb_items=breadcrumb_items %}
+</div>
+{% endif %}
+
+
+<div class="microhistoria-container">
+
+<div class="microhistoria-title">MICROHISTORIA</div>
+
+<h2>La estrella que guiaba el corazón</h2>
+
+<div class="microhistoria-text">
+
+Una noche clara, en un cielo lleno de estrellas, tres sabios de tierras lejanas miraban hacia arriba con asombro.<br><br>
+
+Había una estrella distinta a todas.<br>
+Brillaba más fuerte, como si quisiera mostrar un camino.<br><br>
+
+—Es una señal —dijo uno de ellos—.<br>
+Un gran rey ha nacido.<br><br>
+
+Entonces emprendieron un largo viaje siguiendo aquella luz.<br>
+Cruzaron desiertos, montañas y ciudades, siempre con la mirada puesta en la estrella.<br><br>
+
+Una noche, la estrella se detuvo sobre una pequeña casa en Belén.<br>
+Los sabios entraron con respeto.<br><br>
+
+Allí encontraron a un niño en brazos de su madre, María,<br>
+mientras José los observaba con una sonrisa tranquila.<br><br>
+
+Los tres se arrodillaron y ofrecieron sus regalos:<br>
+oro para un rey,<br>
+incienso para honrar a Dios,<br>
+y mirra como signo de amor.<br><br>
+
+Pero al mirar al niño comprendieron algo muy importante:<br>
+el regalo más grande no estaba en sus manos,<br>
+sino en aquel pequeño que había venido a traer luz y esperanza al mundo.<br><br>
+
+</div>
+
+<div class="microhistoria-final">
+✨ La estrella sigue brillando para quienes buscan a Jesús con el corazón. ⭐
+</div>
+
+<button class="audio-btn" onclick="document.getElementById('audio').play()">🔊 Escuchar narración</button>
+
+<a style="text-decoration: none;" class="audio-btn" href="{% url 'domingo6' %}">← volver</a>
+
+<audio id="audio" src="{% static '/musica/07/DOM07_MH01.mp3' %}"></audio>
+
+<img style="margin-top: 1em;" src="{% static 'images/domingos/07/DOM07_MHi01.png' %}" alt="">
+</div>
+
+{% include 'partials/quick-menu.html' %}
+
+{% endblock %}

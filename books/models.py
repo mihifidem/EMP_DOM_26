@@ -48,6 +48,35 @@ class Publisher(models.Model):
         verbose_name_plural = "Editoriales"
 
 
+class ColorCard(models.Model):
+    """Modelo para gestionar colores de tarjetas con propiedades litúrgicas"""
+    COLORES_CHOICES = [
+        ('azul', 'Azul'),
+        ('violeta', 'Violeta'),
+        ('verde', 'Verde'),
+        ('naranja', 'Naranja'),
+        ('rosa', 'Rosa'),
+        ('turquesa', 'Turquesa'),
+        ('indigo', 'Índigo'),
+        ('rojo', 'Rojo'),
+        ('blanco', 'Blanco'),
+    ]
+    
+    nombre = models.CharField(max_length=20, choices=COLORES_CHOICES, unique=True)
+    display_name = models.CharField(max_length=50)
+    gradiente_css = models.CharField(max_length=200, help_text="Gradiente CSS del color")
+    es_liturgico = models.BooleanField(default=False, help_text="Indica si es un color litúrgico")
+    descripcion_liturgica = models.CharField(max_length=200, blank=True, null=True, help_text="Significado litúrgico del color")
+    
+    def __str__(self):
+        return f"{self.display_name}{'  [LITÚRGICO]' if self.es_liturgico else ''}"
+    
+    class Meta:
+        ordering = ['nombre']
+        verbose_name = "Color de Tarjeta"
+        verbose_name_plural = "Colores de Tarjeta"
+
+
 class Book(models.Model):
     """Modelo para Libros"""
     titulo = models.CharField(max_length=200)
@@ -85,18 +114,6 @@ class Book(models.Model):
 
 class Section(models.Model):
     """Modelo para Secciones dentro de un Libro"""
-    COLORES_CARD = [
-        ('azul', 'Azul'),
-        ('violeta', 'Violeta'),
-        ('verde', 'Verde'),
-        ('naranja', 'Naranja'),
-        ('rosa', 'Rosa'),
-        ('turquesa', 'Turquesa'),
-        ('indigo', 'Índigo'),
-        ('rojo', 'Rojo'),
-        ('blanco', 'Blanco'),
-    ]
-    
     libro = models.ForeignKey(Book, on_delete=models.CASCADE, related_name='secciones')
     numero = models.IntegerField(help_text="Número de sección en el libro")
     titulo = models.CharField(max_length=200)
@@ -105,7 +122,7 @@ class Section(models.Model):
     numero_pagina_fin = models.IntegerField(blank=True, null=True)
     fecha_inicio = models.DateField(blank=True, null=True)
     fecha_fin = models.DateField(blank=True, null=True)
-    color_card = models.CharField(max_length=20, choices=COLORES_CARD, default='azul', help_text="Color del gradiente de la tarjeta")
+    color_card = models.ForeignKey(ColorCard, on_delete=models.SET_NULL, null=True, default=None, related_name='secciones', help_text="Color del gradiente de la tarjeta")
     fecha_creacion = models.DateTimeField(auto_now_add=True)
     fecha_actualizacion = models.DateTimeField(auto_now=True)
     
@@ -114,17 +131,9 @@ class Section(models.Model):
     
     def get_color_gradient(self):
         """Retorna el gradiente CSS según el color seleccionado"""
-        gradientes = {
-            'azul': 'linear-gradient(135deg, #48c6ef 0%, #6f86d6 100%)',
-            'violeta': 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
-            'verde': 'linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%)',
-            'naranja': 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
-            'rosa': 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
-            'turquesa': 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
-            'indigo': 'linear-gradient(135deg, #7f7fd5 0%, #86a8e7 100%)',
-            'rojo': 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)',
-        }
-        return gradientes.get(self.color_card, gradientes['azul'])
+        if self.color_card:
+            return self.color_card.gradiente_css
+        return 'linear-gradient(135deg, #48c6ef 0%, #6f86d6 100%)'  # Azul por defecto
     
     class Meta:
         ordering = ['libro', 'numero']

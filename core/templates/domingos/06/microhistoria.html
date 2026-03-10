@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<style>
+{% if nino_nombre %}
+.nino-badge {
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    z-index: 9998;
+    background: linear-gradient(135deg, #48c6ef 0%, #6f86d6 100%);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+{% endif %}
+
+.btn-volver-micro {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 12px 30px;
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-volver-micro:hover {
+    background-color: #45a049;
+    transform: scale(1.05);
+}
+</style>
+
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'styles.css' %}">
+
+{% if nino_nombre %}
+<div onclick="window.location.href='{% url 'select-nino' %}?next={{ request.path }}'" style="position: fixed; top: 70px; right: 20px; z-index: 9998; background: linear-gradient(135deg, #48c6ef 0%, #6f86d6 100%); color: white; padding: 10px 20px; border-radius: 25px; box-shadow: 0 4px 12px rgba(0,0,0,0.3); font-weight: bold; display: flex; align-items: center; gap: 8px; cursor: pointer;">
+    <span style="font-size: 1.2em;">👶</span>
+    <span>{{ nino_nombre }}</span>
+    <span style="margin-left: 8px; background: rgba(255,255,255,0.3); padding: 4px 12px; border-radius: 12px; font-size: 0.9em;">
+        ⭐ {{ puntos_totales }}
+    </span>
+</div>
+
+<div id="main">
+    {% include 'partials/breadcrumb.html' with breadcrumb_title=breadcrumb_title breadcrumb_items=breadcrumb_items %}
+</div>
+{% endif %}
+
+
+<div class="microhistoria-container">
+
+<div class="microhistoria-title">MICROHISTORIA</div>
+
+<h2>La casa de Nazaret</h2>
+
+<div class="microhistoria-text">
+
+En el pequeño pueblo de Nazaret había una casa sencilla.<br><br>
+
+Allí vivían María, José y el niño Jesús.<br><br>
+
+Cada día en esa casa ocurrían cosas muy normales.<br>
+Jesús ayudaba a José en el taller.<br>
+Le alcanzaba las herramientas y observaba cómo trabajaba.<br><br>
+
+—Gracias por ayudarme, Jesús —decía José con una sonrisa—.<br>
+Trabajar juntos hace todo más fácil.<br><br>
+
+En casa, María preparaba la comida y Jesús ayudaba a poner la mesa.<br><br>
+
+—En una familia todos nos cuidamos —decía María—.<br>
+Así nuestro hogar está lleno de amor.<br><br>
+
+Por la noche, antes de dormir, los tres daban gracias a Dios por el día vivido.<br><br>
+
+Jesús aprendía algo muy importante cada día:<br>
+que una familia feliz se construye con amor, ayuda y respeto.<br><br>
+
+</div>
+
+<div class="microhistoria-final">
+✨ Cuando nos cuidamos unos a otros, nuestro hogar se parece un poquito a la casa de Nazaret. ❤️
+</div>
+
+<button class="audio-btn" onclick="document.getElementById('audio').play()">🔊 Escuchar narración</button>
+
+<a style="text-decoration: none;" class="audio-btn" href="{% url 'domingo6' %}">← volver</a>
+
+<audio id="audio" src="{% static '/musica/06/DOM06_MH01.mp3' %}"></audio>
+
+<img style="margin-top: 1em;" src="{% static 'images/domingos/06/DOM06_MHi01.png' %}" alt="">
+
+</div>
+
+{% include 'partials/quick-menu.html' %}
+
+{% endblock %}
