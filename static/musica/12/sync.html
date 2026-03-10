@@ -1,0 +1,240 @@
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sincronizador PRO</title>
+
+<style>
+body {
+    font-family: system-ui, sans-serif;
+    background: #0a1a3f;
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+h1 { margin-bottom: 10px; }
+
+.subtitle {
+    font-size: 1.4rem;
+    margin: 30px 0;
+    min-height: 80px;
+}
+
+.controls button {
+    margin: 5px;
+    padding: 10px 16px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    background: gold;
+    color: #1b2f7a;
+}
+
+.progress-container {
+    width: 100%;
+    height: 6px;
+    background: rgba(255,255,255,0.2);
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: gold;
+    border-radius: 5px;
+}
+
+.output {
+    margin-top: 20px;
+    font-size: 0.8rem;
+    max-height: 150px;
+    overflow-y: auto;
+    text-align: left;
+    background: rgba(0,0,0,0.3);
+    padding: 10px;
+    border-radius: 10px;
+}
+</style>
+</head>
+<body>
+
+<h1>🎵 Sincronizador PRO</h1>
+<p>Pulsa <strong>A</strong> para marcar tiempo</p>
+
+<div class="subtitle" id="subtitle"></div>
+
+<div class="controls">
+    <button id="playBtn">▶️ Reproducir</button>
+    <button id="backBtn">⬅ Retroceder</button>
+    <button id="exportBtn">💾 Exportar JSON</button>
+    <button id="clearBtn">🗑 Reiniciar</button>
+</div>
+
+<div class="progress-container">
+    <div class="progress-bar" id="progressBar"></div>
+</div>
+
+<div class="output" id="output"></div>
+
+<audio id="audio">
+    <source src="DOM12_C01.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+// LETRA ORIGINAL
+const lyrics = [
+'Pongo mis pies sobre la roca',
+
+'Pongo mis pies sobre la roca firme',
+'Siento una mano que me guía al caminar',
+'Aunque el sendero parezca muy largo',
+'Sé que a mi lado alguien siempre va a estar',
+
+'Cierro los ojos y hablo bajito',
+'Como un secreto que vuela hacia el sol',
+'No necesito mirar los caminos',
+'Si en mi mochila llevo su amor',
+
+'Es la confianza que llena mi pecho',
+'Como un abrazo que quita el temor',
+'Suelto las riendas y salto sin miedo',
+'Porque me cuida el gran Salvador',
+'Es una luz que ilumina la noche',
+'Toda mi vida descansa en su paz',
+'Si Dios me llama yo digo que sí',
+'Él es mi amigo y no falla jamás',
+
+'Como un gorrioncito que vuela tranquilo',
+'Sin preocuparse por qué comerá',
+'Yo guardo su voz dentro de mi alma',
+'Y mi sonrisa florecerá',
+
+'Si el cielo se llena de nubes oscuras',
+'Y el viento fuerte comienza a soplar',
+'Tengo un refugio que nunca se rompe',
+'Tengo una calma que viene del mar',
+
+'Aprendo a esperar con paciencia',
+'Cada promesa se cumplirá',
+'Siembro semillas de esperanza',
+'Mañana el trigo madurará',
+
+'Es la confianza que llena mi pecho',
+'Como un abrazo que quita el temor',
+'Suelto las riendas y salto sin miedo',
+'Porque me cuida el gran Salvador',
+'Es una luz que ilumina la noche',
+'Toda mi vida descansa en su paz',
+'Si Dios me llama yo digo que sí',
+'Él es mi amigo y no falla jamás',
+
+'Confío en Dios',
+'Y camino en su paz'
+];
+const audio = document.getElementById("audio");
+const subtitle = document.getElementById("subtitle");
+const progressBar = document.getElementById("progressBar");
+const output = document.getElementById("output");
+
+const playBtn = document.getElementById("playBtn");
+const backBtn = document.getElementById("backBtn");
+const exportBtn = document.getElementById("exportBtn");
+const clearBtn = document.getElementById("clearBtn");
+
+const sourceEl = audio.querySelector("source");
+const audioId = sourceEl ? sourceEl.getAttribute("src") : "default";
+const storageKey = `syncedLyrics:${audioId}`;
+
+let currentLine = 0;
+let syncedLyrics = JSON.parse(localStorage.getItem(storageKey)) || [];
+
+if (syncedLyrics.length > 0) {
+    currentLine = syncedLyrics.length;
+}
+
+if (currentLine >= lyrics.length) {
+    currentLine = 0;
+    syncedLyrics = [];
+}
+
+updateSubtitle();
+renderOutput();
+
+playBtn.addEventListener("click", () => {
+    audio.play();
+});
+
+backBtn.addEventListener("click", () => {
+    if (currentLine > 0) {
+        currentLine--;
+        syncedLyrics.pop();
+        saveProgress();
+        updateSubtitle();
+        renderOutput();
+    }
+});
+
+clearBtn.addEventListener("click", () => {
+    syncedLyrics = [];
+    currentLine = 0;
+    saveProgress();
+    updateSubtitle();
+    renderOutput();
+});
+
+exportBtn.addEventListener("click", () => {
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(syncedLyrics, null, 2));
+    const downloadAnchorNode = document.createElement('a');
+    downloadAnchorNode.setAttribute("href", dataStr);
+    downloadAnchorNode.setAttribute("download", "lyrics_sync.json");
+    document.body.appendChild(downloadAnchorNode);
+    downloadAnchorNode.click();
+    downloadAnchorNode.remove();
+});
+
+document.addEventListener("keydown", (e) => {
+
+    if (e.key.toLowerCase() === "a") {
+
+        if (currentLine < lyrics.length) {
+
+            syncedLyrics.push({
+                time: parseFloat(audio.currentTime.toFixed(2)),
+                text: lyrics[currentLine]
+            });
+
+            currentLine++;
+            saveProgress();
+            updateSubtitle();
+            renderOutput();
+        }
+    }
+});
+
+audio.addEventListener("timeupdate", () => {
+    const progress = (audio.currentTime / audio.duration) * 100;
+    progressBar.style.width = progress + "%";
+});
+
+function updateSubtitle() {
+    subtitle.innerText = lyrics[currentLine] || "✔ Sincronización completa";
+}
+
+function renderOutput() {
+    output.innerText = JSON.stringify(syncedLyrics, null, 2);
+}
+
+function saveProgress() {
+    localStorage.setItem(storageKey, JSON.stringify(syncedLyrics));
+}
+
+</script>
+
+</body>
+</html>

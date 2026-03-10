@@ -1,0 +1,239 @@
+
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sincronizador PRO</title>
+
+<style>
+body {
+    font-family: system-ui, sans-serif;
+    background: #0a1a3f;
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+h1 { margin-bottom: 10px; }
+
+.subtitle {
+    font-size: 1.4rem;
+    margin: 30px 0;
+    min-height: 80px;
+}
+
+.controls button {
+    margin: 5px;
+    padding: 10px 16px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    background: gold;
+    color: #1b2f7a;
+}
+
+.progress-container {
+    width: 100%;
+    height: 6px;
+    background: rgba(255,255,255,0.2);
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0%;
+    background: gold;
+    border-radius: 5px;
+}
+
+.output {
+    margin-top: 20px;
+    font-size: 0.8rem;
+    max-height: 150px;
+    overflow-y: auto;
+    text-align: left;
+    background: rgba(0,0,0,0.3);
+    padding: 10px;
+    border-radius: 10px;
+}
+</style>
+</head>
+<body>
+
+<h1>🎵 Sincronizador PRO</h1>
+<p>Pulsa <strong>A</strong> para marcar tiempo</p>
+
+<div class="subtitle" id="subtitle"></div>
+
+<div class="controls">
+    <button id="playBtn">▶️ Reproducir</button>
+    <button id="backBtn">⬅ Retroceder</button>
+    <button id="exportBtn">💾 Exportar JSON</button>
+    <button id="clearBtn">🗑 Reiniciar</button>
+</div>
+
+<div class="progress-container">
+    <div class="progress-bar" id="progressBar"></div>
+</div>
+
+<div class="output" id="output"></div>
+
+<audio id="audio">
+    <source src="DOM08_C01.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+// LETRA ORIGINAL
+const lyrics = [
+'Tú eres mi Hijo amado',
+
+'Junto al río en silencio',
+'Jesús se acerca a orar',
+'El agua toca su cuerpo',
+'El cielo se quiere abrir ya',
+'No trae palabras grandes',
+'Ni busca llamar la atención',
+'Pero en el gesto sencillo',
+'Habla fuerte el amor',
+
+'Tú eres mi Hijo amado',
+'Se escucha decir a Dios',
+'En Ti tengo puesta mi alegría',
+'En Ti vive mi amor',
+'Tú eres mi Hijo amado',
+'Y al escucharlo hoy aquí',
+'Dios me dice en silencio',
+'Yo también te elegí',
+
+'El agua cae despacio',
+'Como lluvia de paz',
+'Y el Espíritu desciende',
+'Como luz al pasar',
+'Jesús comienza su camino',
+'No está solo al andar',
+'Sabe quién es, sabe a quién ama',
+'Y al mundo va a anunciar',
+
+'Tú eres mi Hijo amado',
+'Se escucha decir a Dios',
+'En Ti tengo puesta mi alegría',
+'En Ti vive mi amor',
+'Tú eres mi Hijo amado',
+'Y al escucharlo hoy aquí',
+'Dios me dice en silencio',
+'Yo también te elegí',
+
+'Soy hijo',
+'Soy amado',
+'Dios me llama por mi nombre',
+
+'Tú eres mi Hijo amado',
+'No lo voy a olvidar',
+'Si confío y doy cada paso',
+'Sé que Dios me guiará'
+];
+const audio = document.getElementById("audio");
+const subtitle = document.getElementById("subtitle");
+const progressBar = document.getElementById("progressBar");
+const output = document.getElementById("output");
+
+const playBtn = document.getElementById("playBtn");
+const backBtn = document.getElementById("backBtn");
+const exportBtn = document.getElementById("exportBtn");
+const clearBtn = document.getElementById("clearBtn");
+
+const sourceEl = audio.querySelector("source");
+const audioId = sourceEl ? sourceEl.getAttribute("src") : "default";
+const storageKey = `syncedLyrics:${audioId}`;
+
+let currentLine = 0;
+let syncedLyrics = JSON.parse(localStorage.getItem(storageKey)) || [];
+
+if (syncedLyrics.length > 0) {
+    currentLine = syncedLyrics.length;
+}
+
+if (currentLine >= lyrics.length) {
+    currentLine = 0;
+    syncedLyrics = [];
+}
+
+updateSubtitle();
+renderOutput();
+
+playBtn.addEventListener("click", () => {
+    audio.play();
+});
+
+backBtn.addEventListener("click", () => {
+    if (currentLine > 0) {
+        currentLine--;
+        syncedLyrics.pop();
+        saveProgress();
+        updateSubtitle();
+        renderOutput();
+    }
+});
+
+clearBtn.addEventListener("click", () => {
+    syncedLyrics = [];
+    currentLine = 0;
+    saveProgress();
+    updateSubtitle();
+    renderOutput();
+});
+
+exportBtn.addEventListener("click", () => {
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(syncedLyrics, null, 2));
+    const downloadAnchorNode = document.createElement('a');
+    downloadAnchorNode.setAttribute("href", dataStr);
+    downloadAnchorNode.setAttribute("download", "lyrics_sync.json");
+    document.body.appendChild(downloadAnchorNode);
+    downloadAnchorNode.click();
+    downloadAnchorNode.remove();
+});
+
+document.addEventListener("keydown", (e) => {
+
+    if (e.key.toLowerCase() === "a") {
+
+        if (currentLine < lyrics.length) {
+
+            syncedLyrics.push({
+                time: parseFloat(audio.currentTime.toFixed(2)),
+                text: lyrics[currentLine]
+            });
+
+            currentLine++;
+            saveProgress();
+            updateSubtitle();
+            renderOutput();
+        }
+    }
+});
+
+audio.addEventListener("timeupdate", () => {
+    const progress = (audio.currentTime / audio.duration) * 100;
+    progressBar.style.width = progress + "%";
+});
+
+function updateSubtitle() {
+    subtitle.innerText = lyrics[currentLine] || "✔ Sincronización completa";
+}
+
+function renderOutput() {
+    output.innerText = JSON.stringify(syncedLyrics, null, 2);
+}
+
+function saveProgress() {
+    localStorage.setItem(storageKey, JSON.stringify(syncedLyrics));
+}
+
+</script>
+
+</body>
+</html>
